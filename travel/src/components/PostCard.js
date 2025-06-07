@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Heart, MessageCircle, Share, Bookmark } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './PostCard.css';
+import { useNavigate } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes || 0);
+  const navigate = useNavigate();
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -23,22 +25,8 @@ const PostCard = ({ post }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      whileTap={{ scale: 0.97 }}
     >
-      {/* 用户信息 */}
-      <div className="post-header">
-        <div className="user-info">
-          <img 
-            src={post.user.avatar || '/api/placeholder/40/40'} 
-            alt={post.user.name}
-            className="user-avatar"
-          />
-          <div className="user-details">
-            <h4 className="user-name">{post.user.name}</h4>
-            <span className="post-time">{post.timeAgo}</span>
-          </div>
-        </div>
-      </div>
-
       {/* 图片 */}
       {post.images && post.images.length > 0 && (
         <div className="post-images">
@@ -55,10 +43,10 @@ const PostCard = ({ post }) => {
         </div>
       )}
 
-      {/* 内容 */}
+      {/* 标题和摘要 */}
       <div className="post-content">
-        <p className="post-text">{post.content}</p>
-        
+        <div className="post-title">{post.title}</div>
+        <div className="post-abstract">{post.content.slice(0, 50)}{post.content.length > 50 ? '...' : ''}</div>
         {post.tags && post.tags.length > 0 && (
           <div className="post-tags">
             {post.tags.map((tag, index) => (
@@ -66,6 +54,16 @@ const PostCard = ({ post }) => {
             ))}
           </div>
         )}
+      </div>
+
+      {/* 用户信息弱化显示（含头像） */}
+      <div className="post-user-weak">
+        <img className="user-avatar-weak" src={post.user.avatar} alt={post.user.name} onClick={e => {e.stopPropagation(); navigate(`/user/${encodeURIComponent(post.user.name)}`);}} style={{cursor: 'pointer'}}
+          onMouseDown={e => e.stopPropagation()}
+          onTouchStart={e => e.stopPropagation()}
+        />
+        <span className="user-name-weak">{post.user.name}</span>
+        <span className="post-time-weak"> · {post.timeAgo}</span>
       </div>
 
       {/* 交互按钮 */}
