@@ -95,7 +95,7 @@
 /* 主理人网格 */
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -147,7 +147,11 @@
 
 /* 主理人信息 */
 .guide-info {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .guide-profile {
@@ -204,7 +208,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 15px;
 }
 
 .specialty-tag {
@@ -220,11 +223,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
+  margin-top: 12px;
 }
 
+/* 价格和可用性 */
 .guide-price {
   font-size: 1.1rem;
   font-weight: 700;
@@ -322,4 +324,4 @@
   .guide-card {
     margin: 0 10px;
   }
-} 
+}

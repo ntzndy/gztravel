@@ -12,6 +12,7 @@ import FootballDetail from './pages/home/FootballDetail';
 import CultureDetail from './pages/home/CultureDetail';
 import PostDetail from './pages/post/PostDetail';
 import OrderDetail from './pages/order/OrderDetail';
+import GuideDetail from './pages/guide/GuideDetail';
 import './App.css';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/culture/:id" element={<CultureDetail />} />
             <Route path="/post/:id" element={<PostDetail />} />
             <Route path="/order/:id" element={<OrderDetail />} />
+            <Route path="/guide/:id" element={<GuideDetail />} />
           </Routes>
         </main>
       </div>
