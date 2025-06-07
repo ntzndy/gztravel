@@ -24,4 +24,4 @@ travel/Thumbs.db
 
 # Others
 travel/coverage/
-*.local 
+*.local travel/node_modules/
