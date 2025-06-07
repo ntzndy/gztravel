@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, Share, Bookmark } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import './PostCard.css';
 
 const PostCard = ({ post }) => {
+  const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes || 0);
@@ -17,12 +19,22 @@ const PostCard = ({ post }) => {
     setIsBookmarked(!isBookmarked);
   };
 
+  const handlePostClick = (e) => {
+    // 如果点击的是交互按钮，不触发导航
+    if (e.target.closest('.post-actions') || e.target.closest('.action-btn')) {
+      return;
+    }
+    navigate(`/post/${post.id}`);
+  };
+
   return (
     <motion.div 
       className="post-card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
+      onClick={handlePostClick}
+      style={{ cursor: 'pointer' }}
     >
       {/* 用户信息 */}
       <div className="post-header">

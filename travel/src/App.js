@@ -10,6 +10,8 @@ import GuideService from './pages/guide/GuideService';
 import AttractionDetail from './pages/home/AttractionDetail';
 import FootballDetail from './pages/home/FootballDetail';
 import CultureDetail from './pages/home/CultureDetail';
+import PostDetail from './pages/post/PostDetail';
+import OrderDetail from './pages/order/OrderDetail';
 import './App.css';
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
             <Route path="/attraction/:id" element={<AttractionDetail />} />
             <Route path="/football/:id" element={<FootballDetail />} />
             <Route path="/culture/:id" element={<CultureDetail />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/order/:id" element={<OrderDetail />} />
           </Routes>
         </main>
       </div>
