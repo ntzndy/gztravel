@@ -1,0 +1,11 @@
+travel/node_modules/
+travel/dist/
+travel/build/
+travel/.env
+travel/.env.*
+travel/npm-debug.log*
+travel/yarn-debug.log*
+travel/yarn-error.log*
+travel/.vscode/
+travel/.idea/
+travel/.DS_Store
