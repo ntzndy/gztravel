@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Calendar, Trophy, Users, Camera, Star, ChevronRight } from 'lucide-react';
+import { FiMapPin, FiCalendar, FiAward, FiUsers, FiCamera, FiStar, FiChevronRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import './CultureHome.css';
@@ -164,15 +164,15 @@ const CultureHome = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="stat-item">
-              <Users size={24} />
+              <FiUsers size={24} />
               <span>48个民族</span>
             </div>
             <div className="stat-item">
-              <Trophy size={24} />
+              <FiAward size={24} />
               <span>村超热潮</span>
             </div>
             <div className="stat-item">
-              <Camera size={24} />
+              <FiCamera size={24} />
               <span>世界遗产</span>
             </div>
           </motion.div>
@@ -187,21 +187,21 @@ const CultureHome = () => {
               className={`nav-tab ${activeSection === 'culture' ? 'active' : ''}`}
               onClick={() => setActiveSection('culture')}
             >
-              <Users size={20} />
+              <FiUsers size={20} />
               民族文化
             </button>
             <button 
               className={`nav-tab ${activeSection === 'football' ? 'active' : ''}`}
               onClick={() => setActiveSection('football')}
             >
-              <Trophy size={20} />
+              <FiAward size={20} />
               村超比赛
             </button>
             <button 
               className={`nav-tab ${activeSection === 'spots' ? 'active' : ''}`}
               onClick={() => setActiveSection('spots')}
             >
-              <MapPin size={20} />
+              <FiMapPin size={20} />
               精彩景点
             </button>
           </div>
@@ -234,7 +234,7 @@ const CultureHome = () => {
                   <div className="culture-image">
                     <img src={culture.image} alt={culture.name} />
                     <div className="culture-overlay">
-                      <MapPin size={16} />
+                      <FiMapPin size={16} />
                       <span>{culture.region}</span>
                     </div>
                   </div>
@@ -247,7 +247,7 @@ const CultureHome = () => {
                       ))}
                     </div>
                     <Link to="/" className="explore-btn">
-                      了解更多 <ChevronRight size={16} />
+                      了解更多 <FiChevronRight size={16} />
                     </Link>
                   </div>
                 </motion.div>
@@ -281,7 +281,7 @@ const CultureHome = () => {
                   <div className="football-image">
                     <img src={match.image} alt={match.title} />
                     <div className="football-badge">
-                      <Trophy size={20} />
+                      <FiAward size={20} />
                     </div>
                   </div>
                   <div className="football-content">
@@ -290,15 +290,15 @@ const CultureHome = () => {
                     
                     <div className="football-info">
                       <div className="info-item">
-                        <Calendar size={16} />
+                        <FiCalendar size={16} />
                         <span>{match.date}</span>
                       </div>
                       <div className="info-item">
-                        <MapPin size={16} />
+                        <FiMapPin size={16} />
                         <span>{match.location}</span>
                       </div>
                       <div className="info-item">
-                        <Users size={16} />
+                        <FiUsers size={16} />
                         <span>{match.participants}</span>
                       </div>
                     </div>
@@ -341,14 +341,14 @@ const CultureHome = () => {
                     <img src={spot.image} alt={spot.name} />
                     <div className="spot-type">{spot.type}</div>
                     <div className="spot-rating">
-                      <Star size={14} fill="currentColor" />
+                      <FiStar size={14} fill="currentColor" />
                       <span>{spot.rating}</span>
                     </div>
                   </div>
                   <div className="spot-content">
                     <h3>{spot.name}</h3>
                     <div className="spot-location">
-                      <MapPin size={14} />
+                      <FiMapPin size={14} />
                       <span>{spot.location}</span>
                     </div>
                     <p>{spot.description}</p>

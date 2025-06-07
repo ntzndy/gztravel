@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Globe } from 'lucide-react';
+import { FiGlobe } from 'react-icons/fi';
 import { useLanguage } from '../context/LanguageContext';
 import './LanguageSwitcher.css';
 
@@ -22,7 +22,7 @@ const LanguageSwitcher = () => {
         className="language-btn"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Globe size={16} className="language-globe-icon" />
+        <FiGlobe size={16} className="language-globe-icon" />
         <span className="language-label">语言</span>
         <span className="language-flag">{currentLang?.flag}</span>
         <span className="language-name">{currentLang?.name}</span>

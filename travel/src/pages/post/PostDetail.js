@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Heart, MessageCircle, Share, Bookmark, ArrowLeft, Send, MoreHorizontal } from 'lucide-react';
+import { FiHeart, FiMessageCircle, FiShare, FiBookmark, FiArrowLeft, FiSend, FiMoreHorizontal } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import './PostDetail.css';
 
@@ -152,11 +152,11 @@ const PostDetail = () => {
       {/* 顶部导航 */}
       <div className="post-detail-header">
         <button className="back-btn" onClick={() => navigate(-1)}>
-          <ArrowLeft size={24} />
+          <FiArrowLeft size={24} />
         </button>
         <h2>帖子详情</h2>
         <button className="more-btn">
-          <MoreHorizontal size={24} />
+          <FiMoreHorizontal size={24} />
         </button>
       </div>
 
@@ -236,7 +236,7 @@ const PostDetail = () => {
               onClick={handleLike}
               whileTap={{ scale: 0.9 }}
             >
-              <Heart 
+              <FiHeart 
                 size={24} 
                 fill={isLiked ? '#ff6b6b' : 'none'}
                 color={isLiked ? '#ff6b6b' : '#666'}
@@ -245,12 +245,12 @@ const PostDetail = () => {
             </motion.button>
 
             <button className="action-btn">
-              <MessageCircle size={24} />
+              <FiMessageCircle size={24} />
               <span>{comments.length}</span>
             </button>
 
             <button className="action-btn" onClick={handleShare}>
-              <Share size={24} />
+              <FiShare size={24} />
               <span>{post.shares}</span>
             </button>
 
@@ -259,7 +259,7 @@ const PostDetail = () => {
               onClick={handleBookmark}
               whileTap={{ scale: 0.9 }}
             >
-              <Bookmark 
+              <FiBookmark 
                 size={24} 
                 fill={isBookmarked ? '#4ecdc4' : 'none'}
                 color={isBookmarked ? '#4ecdc4' : '#666'}
@@ -282,7 +282,7 @@ const PostDetail = () => {
               className="comment-input"
             />
             <button type="submit" className="send-btn" disabled={!newComment.trim()}>
-              <Send size={20} />
+              <FiSend size={20} />
             </button>
           </form>
 
@@ -305,7 +305,7 @@ const PostDetail = () => {
                   <p className="comment-text">{comment.content}</p>
                   <div className="comment-actions">
                     <button className="comment-like-btn">
-                      <Heart size={14} />
+                      <FiHeart size={14} />
                       <span>{comment.likes}</span>
                     </button>
                     <button className="comment-reply-btn">回复</button>

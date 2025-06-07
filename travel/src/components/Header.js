@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Plus, User, Heart, MessageCircle, Users } from 'lucide-react';
+import { FiSearch, FiPlus, FiUser, FiHeart, FiMessageCircle, FiUsers } from 'react-icons/fi';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import './Header.css';
@@ -23,7 +23,7 @@ const Header = () => {
 
           {/* 搜索框 */}
           <div className="search-box">
-            <Search className="search-icon" size={20} />
+            <FiSearch className="search-icon" size={20} />
             <input
               type="text"
               placeholder={t('search_placeholder')}
@@ -39,7 +39,7 @@ const Header = () => {
               to="/" 
               className={`nav-item ${isActive('/') ? 'active' : ''}`}
             >
-              <Heart size={20} />
+              <FiHeart size={20} />
               <span>{t('home')}</span>
             </Link>
             
@@ -47,7 +47,7 @@ const Header = () => {
               to="/community" 
               className={`nav-item ${isActive('/community') ? 'active' : ''}`}
             >
-              <MessageCircle size={20} />
+              <FiMessageCircle size={20} />
               <span>{t('community')}</span>
             </Link>
 
@@ -55,7 +55,7 @@ const Header = () => {
               to="/guides" 
               className={`nav-item ${isActive('/guides') ? 'active' : ''}`}
             >
-              <Users size={20} />
+              <FiUsers size={20} />
               <span>{t('guides')}</span>
             </Link>
             
@@ -63,7 +63,7 @@ const Header = () => {
               to="/publish" 
               className={`nav-item ${isActive('/publish') ? 'active' : ''}`}
             >
-              <Plus size={20} />
+              <FiPlus size={20} />
               <span>{t('publish')}</span>
             </Link>
             
@@ -71,7 +71,7 @@ const Header = () => {
               to="/profile" 
               className={`nav-item ${isActive('/profile') ? 'active' : ''}`}
             >
-              <User size={20} />
+              <FiUser size={20} />
               <span>{t('profile')}</span>
             </Link>
           </nav>
@@ -83,7 +83,7 @@ const Header = () => {
 
           {/* 移动端菜单按钮 */}
           <div className="mobile-menu">
-            <MessageCircle size={24} />
+            <FiMessageCircle size={24} />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, X, MapPin, Hash } from 'lucide-react';
+import { FiCamera, FiX, FiMapPin, FiHash } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import './Publish.css';
 
@@ -80,14 +80,14 @@ const Publish = () => {
                     className="remove-image"
                     onClick={() => removeImage(image.id)}
                   >
-                    <X size={20} />
+                    <FiX size={20} />
                   </button>
                 </div>
               ))}
               
               {images.length < 9 && (
                 <label className="image-upload-btn">
-                  <Camera size={32} />
+                  <FiCamera size={32} />
                   <span>添加图片</span>
                   <input
                     type="file"
@@ -119,7 +119,7 @@ const Publish = () => {
           {/* 标签输入 */}
           <div className="tags-section">
             <div className="section-header">
-              <Hash size={20} />
+              <FiHash size={20} />
               <span>添加标签</span>
             </div>
             <div className="tags-input-container">
@@ -141,7 +141,7 @@ const Publish = () => {
                   <span key={index} className="tag-item">
                     #{tag}
                     <button onClick={() => removeTag(tag)}>
-                      <X size={14} />
+                      <FiX size={14} />
                     </button>
                   </span>
                 ))}
@@ -152,7 +152,7 @@ const Publish = () => {
           {/* 位置信息 */}
           <div className="location-section">
             <div className="section-header">
-              <MapPin size={20} />
+              <FiMapPin size={20} />
               <span>添加位置</span>
             </div>
             <input

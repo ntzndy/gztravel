@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Share, Bookmark } from 'lucide-react';
+import { FiHeart, FiMessageCircle, FiShare, FiBookmark } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import './PostCard.css';
@@ -87,7 +87,7 @@ const PostCard = ({ post }) => {
           onClick={handleLike}
           whileTap={{ scale: 0.9 }}
         >
-          <Heart 
+          <FiHeart 
             size={20} 
             fill={isLiked ? '#ff6b6b' : 'none'}
             color={isLiked ? '#ff6b6b' : '#666'}
@@ -96,12 +96,12 @@ const PostCard = ({ post }) => {
         </motion.button>
 
         <button className="action-btn">
-          <MessageCircle size={20} />
+          <FiMessageCircle size={20} />
           <span>{post.comments || 0}</span>
         </button>
 
         <button className="action-btn">
-          <Share size={20} />
+          <FiShare size={20} />
         </button>
 
         <motion.button 
@@ -109,7 +109,7 @@ const PostCard = ({ post }) => {
           onClick={handleBookmark}
           whileTap={{ scale: 0.9 }}
         >
-          <Bookmark 
+          <FiBookmark 
             size={20} 
             fill={isBookmarked ? '#4ecdc4' : 'none'}
             color={isBookmarked ? '#4ecdc4' : '#666'}

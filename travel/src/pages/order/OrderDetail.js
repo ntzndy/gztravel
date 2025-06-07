@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, MapPin, Calendar, Clock, Phone, QrCode, X } from 'lucide-react';
+import { FiArrowLeft, FiMapPin, FiCalendar, FiClock, FiPhone, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import QRCode from 'qrcode';
 import './OrderDetail.css';
@@ -143,7 +143,7 @@ const OrderDetail = () => {
       {/* 顶部导航 */}
       <div className="order-detail-header">
         <button className="back-btn" onClick={() => navigate(-1)}>
-          <ArrowLeft size={24} />
+          <FiArrowLeft size={24} />
         </button>
         <h2>订单详情</h2>
         <div></div>
@@ -167,7 +167,7 @@ const OrderDetail = () => {
             <div className="order-type">{order.type}</div>
             <h3 className="order-title">{order.title}</h3>
             <div className="order-location">
-              <MapPin size={16} />
+              <FiMapPin size={16} />
               <span>{order.location}</span>
             </div>
             <div className="order-price">
@@ -184,12 +184,12 @@ const OrderDetail = () => {
           <h4>使用信息</h4>
           <div className="usage-details">
             <div className="usage-item">
-              <Calendar size={16} />
+              <FiCalendar size={16} />
               <span>使用日期：{order.usageDate}</span>
             </div>
             {order.validUntil && (
               <div className="usage-item">
-                <Clock size={16} />
+                <FiClock size={16} />
                 <span>有效期至：{order.validUntil}</span>
               </div>
             )}
@@ -215,7 +215,7 @@ const OrderDetail = () => {
                   <span>★ {order.guide.rating}</span>
                 </div>
                 <div className="guide-contact">
-                  <Phone size={14} />
+                  <FiPhone size={14} />
                   <span>{order.guide.phone}</span>
                 </div>
               </div>
@@ -271,7 +271,7 @@ const OrderDetail = () => {
         <div className="order-actions">
           {order.status === '待使用' && (
             <button className="btn btn-primary btn-full" onClick={handleUseOrder}>
-              <QrCode size={20} />
+              <span style={{fontSize: '20px', marginRight: '8px'}}>📱</span>
               立即使用
             </button>
           )}
@@ -302,7 +302,7 @@ const OrderDetail = () => {
                   className="close-btn"
                   onClick={() => setShowQRCode(false)}
                 >
-                  <X size={20} />
+                  <FiX size={20} />
                 </button>
               </div>
               

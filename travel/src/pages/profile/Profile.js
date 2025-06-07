@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Settings, Grid, Bookmark, MapPin, Calendar, ShoppingBag, User, LogIn, UserPlus, X, Edit3, LogOut, ChevronDown, Upload, Camera } from 'lucide-react';
+import { FiSettings, FiGrid, FiBookmark, FiMapPin, FiCalendar, FiShoppingBag, FiUser, FiLogIn, FiUserPlus, FiX, FiEdit3, FiLogOut, FiChevronDown, FiUpload, FiCamera } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PostCard from '../../components/PostCard';
@@ -122,9 +122,9 @@ const Profile = () => {
   }, [showAuthModal, showEditModal]);
 
   const tabs = [
-    { id: 'posts', label: '帖子', icon: Grid, count: isLoggedIn ? mockUserPosts.length : 0 },
-    { id: 'orders', label: '订单', icon: ShoppingBag, count: isLoggedIn ? mockOrders.length : 0 },
-    { id: 'saved', label: '收藏', icon: Bookmark, count: isLoggedIn ? 45 : 0 }
+    { id: 'posts', label: '帖子', icon: FiGrid, count: isLoggedIn ? mockUserPosts.length : 0 },
+    { id: 'orders', label: '订单', icon: FiShoppingBag, count: isLoggedIn ? mockOrders.length : 0 },
+    { id: 'saved', label: '收藏', icon: FiBookmark, count: isLoggedIn ? 45 : 0 }
   ];
 
   const handleInputChange = (e) => {
@@ -246,7 +246,7 @@ const Profile = () => {
         <div className="container">
           <div className="login-prompt">
             <div className="login-card">
-              <User size={64} className="login-icon" />
+              <FiUser size={64} className="login-icon" />
               <h2>欢迎来到贵州Travel</h2>
               <p>登录后可以查看个人信息、发布内容、管理订单等更多功能</p>
               
@@ -258,7 +258,7 @@ const Profile = () => {
                     setShowAuthModal(true);
                   }}
                 >
-                  <LogIn size={20} />
+                  <FiLogIn size={20} />
                   登录
                 </button>
                 <button 
@@ -268,7 +268,7 @@ const Profile = () => {
                     setShowAuthModal(true);
                   }}
                 >
-                  <UserPlus size={20} />
+                  <FiUserPlus size={20} />
                   注册
                 </button>
               </div>
@@ -299,7 +299,7 @@ const Profile = () => {
                     className="close-btn"
                     onClick={() => setShowAuthModal(false)}
                   >
-                    <X size={20} />
+                    <FiX size={20} />
                   </button>
                 </div>
                 
@@ -413,7 +413,7 @@ const Profile = () => {
                 className="profile-avatar"
               />
               <button className="edit-avatar-btn" onClick={handleEditProfile}>
-                <Edit3 size={16} />
+                <FiEdit3 size={16} />
               </button>
             </div>
             
@@ -427,8 +427,8 @@ const Profile = () => {
                       className="settings-btn"
                       onClick={() => setShowSettingsDropdown(!showSettingsDropdown)}
                     >
-                      <Settings size={18} />
-                      <ChevronDown size={14} className={`chevron ${showSettingsDropdown ? 'rotated' : ''}`} />
+                      <FiSettings size={18} />
+                      <FiChevronDown size={14} className={`chevron ${showSettingsDropdown ? 'rotated' : ''}`} />
                     </button>
                     
                     <AnimatePresence>
@@ -441,16 +441,16 @@ const Profile = () => {
                           transition={{ duration: 0.2 }}
                         >
                           <button className="dropdown-item" onClick={handleEditProfile}>
-                            <Edit3 size={16} />
+                            <FiEdit3 size={16} />
                             <span>编辑资料</span>
                           </button>
                           <button className="dropdown-item" onClick={handleSettings}>
-                            <Settings size={16} />
+                            <FiSettings size={16} />
                             <span>设置</span>
                           </button>
                           <div className="dropdown-divider"></div>
                           <button className="dropdown-item logout" onClick={handleLogout}>
-                            <LogOut size={16} />
+                            <FiLogOut size={16} />
                             <span>退出登录</span>
                           </button>
                         </motion.div>
@@ -464,11 +464,11 @@ const Profile = () => {
               
               <div className="user-meta">
                 <div className="meta-item">
-                  <MapPin size={14} />
+                  <FiMapPin size={14} />
                   <span>{userData.location}</span>
                 </div>
                 <div className="meta-item">
-                  <Calendar size={14} />
+                  <FiCalendar size={14} />
                   <span>加入于 {userData.joinDate}</span>
                 </div>
               </div>
@@ -552,7 +552,7 @@ const Profile = () => {
                       <div className="order-type">{order.type}</div>
                       <h4 className="order-title">{order.title}</h4>
                       <div className="order-location">
-                        <MapPin size={14} />
+                        <FiMapPin size={14} />
                         <span>{order.location}</span>
                       </div>
                       <div className="order-date">使用日期：{order.date}</div>
@@ -586,7 +586,7 @@ const Profile = () => {
 
           {activeTab === 'saved' && (
             <div className="empty-state">
-              <Bookmark size={64} className="empty-icon" />
+              <FiBookmark size={64} className="empty-icon" />
               <h3>还没有收藏的内容</h3>
               <p>收藏你喜欢的帖子，随时回来查看！</p>
             </div>
@@ -616,7 +616,7 @@ const Profile = () => {
                     className="close-btn"
                     onClick={() => setShowEditModal(false)}
                   >
-                    <X size={20} />
+                    <FiX size={20} />
                   </button>
                 </div>
                 
@@ -634,7 +634,7 @@ const Profile = () => {
                           }}
                         />
                         <div className="avatar-upload-overlay">
-                          <Camera size={24} />
+                          <FiCamera size={24} />
                           <span>点击更换</span>
                         </div>
                       </label>
@@ -646,7 +646,7 @@ const Profile = () => {
                         className="avatar-upload-input"
                       />
                       <label htmlFor="avatar-upload" className="avatar-upload-btn">
-                        <Upload size={16} />
+                        <FiUpload size={16} />
                         <span>选择文件</span>
                       </label>
                     </div>
@@ -704,7 +704,7 @@ const Profile = () => {
                         <h5>{editFormData.name || '用户名'}</h5>
                         <p>{editFormData.bio || '暂无简介'}</p>
                         <div className="preview-location">
-                          <MapPin size={12} />
+                          <FiMapPin size={12} />
                           <span>{editFormData.location || '未知地区'}</span>
                         </div>
                       </div>
