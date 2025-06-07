@@ -1,0 +1,27 @@
+# Node
+travel/node_modules/
+
+# Build output
+travel/dist/
+travel/build/
+
+# Env files
+travel/.env
+travel/.env.*
+
+# Logs
+travel/npm-debug.log*
+travel/yarn-debug.log*
+travel/yarn-error.log*
+
+# IDEs
+travel/.vscode/
+travel/.idea/
+travel/.DS_Store
+
+# OS files
+travel/Thumbs.db
+
+# Others
+travel/coverage/
+*.local 
