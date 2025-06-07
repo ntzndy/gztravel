@@ -3,9 +3,9 @@ import PostCard from '../../components/PostCard';
 import { motion } from 'framer-motion';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import mockPosts from './mockPosts';
+import mockPosts from '../post/mockPosts';
 
-const Home = () => {
+const CommunityHome = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => navigate(`/community/${post.id}`)}
+              onClick={() => navigate(`/post/${post.id}`)}
               style={{ cursor: 'pointer' }}
             >
               <PostCard post={post} />
@@ -67,4 +67,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default CommunityHome; 

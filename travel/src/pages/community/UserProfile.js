@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import mockPosts from './mockPosts';
+import mockPosts from '../post/mockPosts';
 import './UserProfile.css';
 import { motion } from 'framer-motion';
 
