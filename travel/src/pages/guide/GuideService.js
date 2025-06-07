@@ -8,7 +8,7 @@ const mockGuides = [
   {
     id: 1,
     name: '小红',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612c03c?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&fit=crop&crop=face',
     title: '资深导游 | 民族文化专家',
     rating: 4.9,
     reviewCount: 328,

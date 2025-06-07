@@ -12,6 +12,7 @@ import FootballDetail from './pages/home/FootballDetail';
 import CultureDetail from './pages/home/CultureDetail';
 import PostDetail from './pages/comment/PostDetail';
 import UserProfile from './pages/comment/UserProfile';
+import GuideDetail from './pages/guide/GuideDetail';
 import './App.css';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/culture/:id" element={<CultureDetail />} />
                 <Route path="/community/:postId" element={<PostDetail />} />
                 <Route path="/user/:userName" element={<UserProfile />} />
+                <Route path="/guide/:id" element={<GuideDetail />} />
               </Routes>
             </motion.div>
           </AnimatePresence>

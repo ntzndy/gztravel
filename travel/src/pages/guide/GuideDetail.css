@@ -1,0 +1,231 @@
+.guide-detail-page {
+  font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  background: #f7f8fa;
+  min-height: 100vh;
+}
+
+.guide-detail-hero {
+  position: relative;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.guide-detail-hero-overlay {
+  position: absolute;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;
+}
+
+.guide-detail-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 32px;
+}
+
+.guide-detail-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  top: 32px;
+  z-index: 4;
+  background: #fff;
+}
+
+.guide-detail-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+}
+
+.guide-detail-title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  opacity: 0.92;
+}
+
+.guide-detail-rating {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.guide-detail-rating span:first-child {
+  color: #ffd700;
+  font-size: 1.2em;
+}
+
+.guide-detail-rating .review-count {
+  color: #eee;
+  font-size: 0.95em;
+  margin-left: 4px;
+}
+
+.guide-detail-container {
+  max-width: 800px;
+  margin: 32px auto 0 auto; /* 原来是 -48px，改为正值 */
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px 24px 24px 24px;
+  position: relative;
+  z-index: 3;
+}
+
+.guide-detail-section {
+  margin-bottom: 32px;
+}
+
+.guide-detail-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #222;
+}
+
+.guide-detail-basic {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.guide-detail-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.guide-detail-info-item i {
+  color: #4e91f9;
+  font-size: 1.1em;
+}
+
+.guide-detail-gallery {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.guide-detail-gallery-img {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  background: #eee;
+}
+
+.guide-detail-footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.guide-detail-price {
+  font-size: 1.3rem;
+  color: #e94e3c;
+  font-weight: bold;
+}
+
+.guide-detail-availability {
+  color: #4e91f9;
+  font-size: 1rem;
+}
+
+.book-btn, .back-btn {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+
+.book-btn {
+  background: #4e91f9;
+  color: #fff;
+}
+
+.book-btn:hover {
+  background: #3576d3;
+}
+
+.back-btn {
+  background: #f2f2f2;
+  color: #333;
+}
+
+.back-btn:hover {
+  background: #e0e0e0;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: #888;
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #eee;
+  border-top: 4px solid #4e91f9;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.guide-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.guide-detail-tag {
+  background: #f0f4fa;
+  color: #3576d3;
+  border-radius: 12px;
+  padding: 4px 14px;
+  font-size: 0.95em;
+  display: inline-block;
+}
+
+.guide-detail-reviews {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guide-detail-reviews li {
+  background: #f8f9fb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 0.98em;
+}
