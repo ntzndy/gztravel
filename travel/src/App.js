@@ -3,15 +3,15 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import CultureHome from './pages/home/CultureHome';
-import Home from './pages/comment/Home';
+import CommunityHome from './pages/community/Home';
 import Profile from './pages/profile/Profile';
 import Publish from './pages/pubulish/Publish';
 import GuideService from './pages/guide/GuideService';
 import AttractionDetail from './pages/home/AttractionDetail';
 import FootballDetail from './pages/home/FootballDetail';
 import CultureDetail from './pages/home/CultureDetail';
-import PostDetail from './pages/comment/PostDetail';
-import UserProfile from './pages/comment/UserProfile';
+import CommunityPostDetail from './pages/community/PostDetail';
+import UserProfile from './pages/community/UserProfile';
 import './App.css';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -32,14 +32,14 @@ function App() {
             >
               <Routes location={location}>
                 <Route path="/" element={<CultureHome />} />
-                <Route path="/community" element={<Home />} />
+                <Route path="/community" element={<CommunityHome />} />
                 <Route path="/guides" element={<GuideService />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/publish" element={<Publish />} />
                 <Route path="/attraction/:id" element={<AttractionDetail />} />
                 <Route path="/football/:id" element={<FootballDetail />} />
                 <Route path="/culture/:id" element={<CultureDetail />} />
-                <Route path="/community/:postId" element={<PostDetail />} />
+                <Route path="/community/:postId" element={<CommunityPostDetail />} />
                 <Route path="/user/:userName" element={<UserProfile />} />
               </Routes>
             </motion.div>

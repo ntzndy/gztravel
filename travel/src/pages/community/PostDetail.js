@@ -10,7 +10,7 @@ const mockComments = [
   { id: 2, user: '美食家', content: '下次也要去试试！', time: '30分钟前' }
 ];
 
-const PostDetail = () => {
+const CommunityPostDetail = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
   const post = mockPosts.find(p => p.id === Number(postId));
@@ -72,4 +72,4 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail; 
+export default CommunityPostDetail; 

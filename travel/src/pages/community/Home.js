@@ -5,7 +5,7 @@ import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import mockPosts from './mockPosts';
 
-const Home = () => {
+const CommunityHome = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -67,4 +67,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default CommunityHome; 
