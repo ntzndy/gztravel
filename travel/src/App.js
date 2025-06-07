@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import CultureHome from './pages/home/CultureHome';
@@ -10,19 +10,23 @@ import GuideService from './pages/guide/GuideService';
 import AttractionDetail from './pages/home/AttractionDetail';
 import FootballDetail from './pages/home/FootballDetail';
 import CultureDetail from './pages/home/CultureDetail';
+<<<<<<< HEAD
 import PostDetail from './pages/comment/PostDetail';
 import UserProfile from './pages/comment/UserProfile';
 import GuideDetail from './pages/guide/GuideDetail';
+=======
+import PostDetail from './pages/post/PostDetail';
+import OrderDetail from './pages/order/OrderDetail';
+>>>>>>> feature/new-branch
 import './App.css';
-import { AnimatePresence, motion } from 'framer-motion';
 
 function App() {
-  const location = useLocation();
   return (
     <LanguageProvider>
       <div className="App">
         <Header />
         <main className="main-content">
+<<<<<<< HEAD
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
@@ -46,6 +50,20 @@ function App() {
               </Routes>
             </motion.div>
           </AnimatePresence>
+=======
+          <Routes>
+            <Route path="/" element={<CultureHome />} />
+            <Route path="/community" element={<Home />} />
+            <Route path="/guides" element={<GuideService />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/publish" element={<Publish />} />
+            <Route path="/attraction/:id" element={<AttractionDetail />} />
+            <Route path="/football/:id" element={<FootballDetail />} />
+            <Route path="/culture/:id" element={<CultureDetail />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/order/:id" element={<OrderDetail />} />
+          </Routes>
+>>>>>>> feature/new-branch
         </main>
       </div>
     </LanguageProvider>
