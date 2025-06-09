@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PostDetail.css';
-import mockPosts from './mockPosts';
+import { mockPosts } from './mockPosts';
 import { motion } from 'framer-motion';
 
 // 模拟数据（与 Home.js 保持一致）

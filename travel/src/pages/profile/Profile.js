@@ -3,81 +3,18 @@ import { FiSettings, FiGrid, FiBookmark, FiMapPin, FiCalendar, FiShoppingBag, Fi
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PostCard from '../../components/PostCard';
+import { mockUser, mockUserPosts, mockOrders } from '../../mock';
 import './Profile.css';
-
-// 模拟用户数据
-const initialUserData = {
-  id: 1,
-  name: '小红薯用户',
-  avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612c03c?w=150&h=150&fit=crop&crop=face',
-  bio: '热爱生活 | 美食探索者 | 旅行达人 ✨',
-  location: '上海，中国',
-  joinDate: '2023年5月',
-  followers: 1234,
-  following: 567,
-  posts: 2, // 更新为实际帖子数量
-  likes: 5678
-};
-
-// 模拟订单数据
-const mockOrders = [
-  {
-    id: 1,
-    orderNumber: 'GZ20241201001',
-    type: '导游服务',
-    title: '小红 - 苗族文化深度游',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=150&fit=crop',
-    price: '¥800',
-    status: '已完成',
-    date: '2024-11-28',
-    location: '贵州雷山'
-  },
-  {
-    id: 2,
-    orderNumber: 'GZ20241130002',
-    type: '景点门票',
-    title: '黄果树瀑布门票',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=150&h=150&fit=crop',
-    price: '¥180',
-    status: '待使用',
-    date: '2024-12-05',
-    location: '贵州安顺'
-  }
-];
-
-// 模拟用户的帖子
-const mockUserPosts = [
-  {
-    id: 1,
-    user: initialUserData,
-    content: '今天的下午茶时光 ☕️ 在这家咖啡店发现了超好喝的手冲咖啡！',
-    images: ['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400&h=400&fit=crop'],
-    tags: ['咖啡', '下午茶'],
-    likes: 128,
-    comments: 23,
-    timeAgo: '2小时前'
-  },
-  {
-    id: 2,
-    user: initialUserData,
-    content: '周末自制的芝士蛋糕 🍰 第一次做居然成功了！',
-    images: ['https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=400&fit=crop'],
-    tags: ['烘焙', '甜品'],
-    likes: 256,
-    comments: 45,
-    timeAgo: '1天前'
-  }
-];
 
 const Profile = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('posts');
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // 登录状态 - 设置为true方便测试
-  const [showAuthModal, setShowAuthModal] = useState(false); // 显示登录注册模态框
-  const [authMode, setAuthMode] = useState('login'); // 'login' 或 'register'
-  const [showSettingsDropdown, setShowSettingsDropdown] = useState(false); // 显示设置下拉菜单
-  const [showEditModal, setShowEditModal] = useState(false); // 显示编辑资料模态框
-  const [userData, setUserData] = useState(initialUserData); // 用户数据状态
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState('login');
+  const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [userData, setUserData] = useState(mockUser);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -85,10 +22,10 @@ const Profile = () => {
     email: ''
   });
   const [editFormData, setEditFormData] = useState({
-    name: initialUserData.name,
-    bio: initialUserData.bio,
-    location: initialUserData.location,
-    avatar: initialUserData.avatar
+    name: mockUser.name,
+    bio: mockUser.bio,
+    location: mockUser.location,
+    avatar: mockUser.avatar
   });
   
   const dropdownRef = useRef(null);
@@ -123,7 +60,7 @@ const Profile = () => {
 
   const tabs = [
     { id: 'posts', label: '帖子', icon: FiGrid, count: isLoggedIn ? mockUserPosts.length : 0 },
-    { id: 'orders', label: '订单', icon: FiShoppingBag, count: isLoggedIn ? mockOrders.length : 0 },
+    { id: 'orders', label: '订单', icon: FiShoppingBag, count: isLoggedIn ? Object.keys(mockOrders).length : 0 },
     { id: 'saved', label: '收藏', icon: FiBookmark, count: isLoggedIn ? 45 : 0 }
   ];
 
@@ -529,7 +466,7 @@ const Profile = () => {
 
           {activeTab === 'orders' && (
             <div className="orders-grid">
-              {mockOrders.map((order, index) => (
+              {Object.values(mockOrders).map((order, index) => (
                 <motion.div
                   key={order.id}
                   className="order-card"

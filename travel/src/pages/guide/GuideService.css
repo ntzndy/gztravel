@@ -95,7 +95,7 @@
 /* 主理人网格 */
 .guides-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -107,6 +107,8 @@
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 24px;
 }
 
 .guide-card:hover {
@@ -149,32 +151,47 @@
 .guide-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 20px;
+}
+
+.guide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .guide-profile {
   display: flex;
+  gap: 16px;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
 }
 
 .guide-avatar {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.guide-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .guide-details h3 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 5px;
   color: #2c3e50;
+  margin: 0;
+}
+
+.guide-title {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
 }
 
 .guide-rating {
@@ -192,16 +209,28 @@
 
 .guide-basic-info {
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 20px;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   color: #666;
-  font-size: 13px;
+  font-size: 14px;
+}
+
+.guide-bio {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .guide-specialties {
@@ -211,31 +240,40 @@
 }
 
 .specialty-tag {
-  background: rgba(255, 107, 107, 0.1);
-  color: #ff6b6b;
-  padding: 4px 10px;
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+  padding: 6px 12px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.specialty-tag:hover {
+  background: rgba(76, 175, 80, 0.2);
+  transform: translateY(-2px);
 }
 
 .guide-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
 }
 
 /* 价格和可用性 */
 .guide-price {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ff6b6b;
 }
 
 .guide-availability {
-  font-size: 12px;
-  color: #2ecc71;
+  font-size: 14px;
+  color: #4CAF50;
+  font-weight: 500;
 }
 
 .book-btn {
@@ -285,7 +323,7 @@
 /* 响应式设计 */
 @media (max-width: 1200px) {
   .guides-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
@@ -305,6 +343,27 @@
   .section-header h2 {
     font-size: 2rem;
   }
+
+  .guide-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .guide-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .guide-details {
+    align-items: center;
+  }
+
+  .guide-basic-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -323,5 +382,6 @@
   
   .guide-card {
     margin: 0 10px;
+    padding: 16px;
   }
 }

@@ -1,5 +1,5 @@
 // 贵州旅游与本地特色 mock 帖子数据
-const mockPosts = [
+export const mockPosts = [
   {
     id: 1,
     title: '夜宿西江千户苗寨，感受苗族风情',
@@ -42,7 +42,7 @@ const mockPosts = [
       name: '猫猫头',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'
     },
-    images: ['https://images.unsplash.com/photo-1519864600265-abb23847ef2c?w=400&h=400&fit=crop'],
+    images: ['https://imagevsl1.oss-cn-chengdu.aliyuncs.com/heritage/1.png'],
     tags: ['贵阳', '咖啡店', '市集', '美食'],
     likes: 102,
     comments: 1,
@@ -129,6 +129,4 @@ const mockPosts = [
     timeAgo: '9小时前',
     commentList: []
   }
-];
-
-export default mockPosts; 
+]; 

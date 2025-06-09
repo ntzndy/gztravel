@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiSearch, FiPlus, FiUser, FiHeart, FiMessageCircle, FiUsers } from 'react-icons/fi';
+import { FiSearch, FiPlus, FiUser, FiHeart, FiMessageCircle, FiUsers, FiMenu } from 'react-icons/fi';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import './Header.css';
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { t } = useLanguage();
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === path;
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <header className="header">
@@ -23,10 +33,10 @@ const Header = () => {
 
           {/* 搜索框 */}
           <div className="search-box">
-            <FiSearch className="search-icon" size={20} />
+            <FiSearch className="search-icon" />
             <input
               type="text"
-              placeholder={t('search_placeholder')}
+              placeholder={t('search_placeholder') || "搜索景点、文化、体验..."}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               className="search-input"
@@ -34,45 +44,50 @@ const Header = () => {
           </div>
 
           {/* 导航菜单 */}
-          <nav className="nav-menu">
+          <nav className={`nav-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <Link 
               to="/" 
               className={`nav-item ${isActive('/') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FiHeart size={20} />
-              <span>{t('home')}</span>
+              <FiHeart />
+              <span>首页</span>
             </Link>
             
             <Link 
               to="/community" 
               className={`nav-item ${isActive('/community') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FiMessageCircle size={20} />
-              <span>{t('community')}</span>
+              <FiMessageCircle />
+              <span>社区</span>
             </Link>
 
             <Link 
               to="/guides" 
               className={`nav-item ${isActive('/guides') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FiUsers size={20} />
-              <span>{t('guides')}</span>
+              <FiUsers />
+              <span>导游</span>
             </Link>
             
             <Link 
               to="/publish" 
               className={`nav-item ${isActive('/publish') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FiPlus size={20} />
-              <span>{t('publish')}</span>
+              <FiPlus />
+              <span>发布</span>
             </Link>
             
             <Link 
               to="/profile" 
               className={`nav-item ${isActive('/profile') ? 'active' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              <FiUser size={20} />
-              <span>{t('profile')}</span>
+              <FiUser />
+              <span>我的</span>
             </Link>
           </nav>
 
@@ -82,9 +97,13 @@ const Header = () => {
           </div>
 
           {/* 移动端菜单按钮 */}
-          <div className="mobile-menu">
-            <FiMessageCircle size={24} />
-          </div>
+          <button 
+            className="mobile-menu"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <FiMenu size={24} />
+          </button>
         </div>
       </div>
     </header>

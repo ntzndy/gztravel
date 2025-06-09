@@ -1,33 +1,12 @@
 .culture-detail {
   min-height: 100vh;
-  background-color: #f5f5f5;
-}
-
-.back-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #f8f9fa;
 }
 
 .culture-hero {
   position: relative;
-  height: 400px;
+  height: 70vh;
+  min-height: 500px;
   overflow: hidden;
 }
 
@@ -43,6 +22,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 10s ease;
+}
+
+.culture-hero:hover .hero-background img {
+  transform: scale(1);
 }
 
 .hero-overlay {
@@ -51,239 +36,348 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.6) 70%,
+    rgba(0, 0, 0, 0.8)
+  );
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 120px 20px;
+  padding: 0 40px;
   color: #fff;
-  text-align: center;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   line-height: 1.6;
   opacity: 0.9;
+  max-width: 600px;
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  margin: -60px auto 0;
+  padding: 0 40px 80px;
+  position: relative;
+  z-index: 2;
 }
 
 .culture-info {
   background-color: #fff;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  color: #666;
+  gap: 12px;
+  color: #4a4a4a;
+  font-size: 1.1rem;
 }
 
-.highlights {
-  margin-top: 24px;
-}
-
-.highlights h3 {
-  margin-bottom: 16px;
-  color: #333;
-}
-
-.highlight-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.highlight-tag {
-  padding: 6px 12px;
-  background-color: #f0f0f0;
-  border-radius: 16px;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.culture-festivals,
-.culture-crafts,
-.related-guides {
-  margin-bottom: 40px;
-}
-
-.culture-festivals h2,
-.culture-crafts h2,
-.related-guides h2 {
-  margin-bottom: 24px;
-  color: #333;
-  font-size: 1.8rem;
-}
-
-.festivals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-}
-
-.festival-card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.festival-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.festival-header h3 {
-  color: #333;
+.info-item i {
+  color: #ff6b6b;
   font-size: 1.2rem;
 }
 
-.festival-date {
+.features h3 {
+  color: #1a1a1a;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.feature-tags {
   display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #666;
-  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.crafts-grid {
+.feature-tag {
+  padding: 8px 20px;
+  background-color: #f0f2f5;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #4a4a4a;
+  transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+  background-color: #e8eaed;
+  transform: translateY(-2px);
+}
+
+.culture-characteristics,
+.culture-guides,
+.culture-tips,
+.related-cultures {
+  margin-bottom: 80px;
+}
+
+.culture-characteristics h2,
+.culture-guides h2,
+.culture-tips h2,
+.related-cultures h2 {
+  color: #1a1a1a;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.characteristics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
 }
 
-.craft-card {
+.characteristic-card {
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.craft-image {
-  height: 200px;
+.characteristic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.characteristic-image {
+  height: 250px;
   overflow: hidden;
 }
 
-.craft-image img {
+.characteristic-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.craft-content {
-  padding: 24px;
+.characteristic-card:hover .characteristic-image img {
+  transform: scale(1.1);
 }
 
-.craft-content h3 {
-  margin-bottom: 12px;
-  color: #333;
+.characteristic-content {
+  padding: 30px;
 }
 
-.craft-content p {
-  color: #666;
-  line-height: 1.6;
+.characteristic-content h3 {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.characteristic-content p {
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 1.1rem;
 }
 
 .guides-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .guide-card {
   background-color: #fff;
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: 20px;
+  padding: 30px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
 .guide-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
   overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .guide-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.guide-card:hover .guide-avatar img {
+  transform: scale(1.1);
+}
+
+.guide-info {
+  flex: 1;
 }
 
 .guide-info h3 {
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.guide-rating {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.rating {
-  color: #ff6b6b;
+  font-size: 1.4rem;
+  color: #1a1a1a;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
-.review-count {
-  color: #666;
-  font-size: 0.9rem;
+.guide-title {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-.guide-specialties {
+.guide-info p {
+  color: #4a4a4a;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.guide-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.specialty-tag {
-  padding: 4px 8px;
-  background-color: #f0f0f0;
+.guide-tags .tag {
+  padding: 4px 12px;
+  background-color: #E8F5E9;
+  color: #2E7D32;
   border-radius: 12px;
-  font-size: 0.8rem;
-  color: #666;
-}
-
-.view-profile-btn {
-  padding: 8px 16px;
-  background-color: #ff6b6b;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
-.view-profile-btn:hover {
-  background-color: #ff5252;
+.guide-tags .tag:hover {
+  background-color: #C8E6C9;
+  transform: translateY(-2px);
+}
+
+.tips-list {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  list-style: none;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tips-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  color: #4a4a4a;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.tips-list li:last-child {
+  margin-bottom: 0;
+}
+
+.tips-list li::before {
+  content: "•";
+  position: absolute;
+  left: 10px;
+  color: #ff6b6b;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.cultures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.culture-card {
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.culture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.culture-image {
+  height: 220px;
+  overflow: hidden;
+}
+
+.culture-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.culture-card:hover .culture-image img {
+  transform: scale(1.1);
+}
+
+.culture-content {
+  padding: 25px;
+}
+
+.culture-content h3 {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.culture-content p {
+  color: #4a4a4a;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 .loading {
@@ -331,4 +425,48 @@
 
 .error-message button:hover {
   background-color: #ff5252;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .culture-info {
+    padding: 30px;
+  }
+
+  .characteristic-card,
+  .guide-card,
+  .culture-card {
+    width: 100%;
+  }
+
+  .guide-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .guide-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .guide-tags {
+    justify-content: center;
+  }
+
+  .tips-list {
+    padding: 30px;
+  }
+
+  .tips-list li {
+    font-size: 1rem;
+  }
 } 

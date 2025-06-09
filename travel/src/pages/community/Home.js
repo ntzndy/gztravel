@@ -3,17 +3,17 @@ import PostCard from '../../components/PostCard';
 import { motion } from 'framer-motion';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import mockPosts from '../post/mockPosts';
+import { mockPosts } from '../../mock';
 
 const CommunityHome = () => {
-  const [posts, setPosts] = useState([]);
+  const [displayPosts, setDisplayPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     // 模拟加载数据
     setTimeout(() => {
-      setPosts(mockPosts);
+      setDisplayPosts(mockPosts);
       setLoading(false);
     }, 1000);
   }, []);
@@ -44,7 +44,7 @@ const CommunityHome = () => {
 
         {/* 瀑布流布局 */}
         <div className="posts-grid">
-          {posts.map((post, index) => (
+          {displayPosts.map((post, index) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 30 }}
