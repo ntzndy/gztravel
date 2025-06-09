@@ -3,13 +3,14 @@ import { FiMapPin, FiCalendar, FiAward, FiUsers, FiCamera, FiStar, FiChevronRigh
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import './CultureHome.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 // 模拟文化数据
 const cultureData = {
   ethnicCultures: [
     {
       id: 1,
-      name: '苗族文化',
+      name: '苗族',
       description: '苗族是一个历史悠久的民族，以其精美的银饰、绚丽的服装和独特的歌舞文化而闻名。',
       image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
       highlights: ['银饰工艺', '苗族歌舞', '传统服饰', '芦笙节'],
@@ -17,7 +18,7 @@ const cultureData = {
     },
     {
       id: 2,
-      name: '侗族文化',
+      name: '侗族',
       description: '侗族以其独特的建筑艺术——风雨桥和鼓楼，以及美妙的侗族大歌而著称于世。',
       image: 'https://images.unsplash.com/photo-1585068529053-1d4e24a6e2b6?w=600&h=400&fit=crop',
       highlights: ['侗族大歌', '风雨桥', '鼓楼建筑', '织锦技艺'],
@@ -25,7 +26,7 @@ const cultureData = {
     },
     {
       id: 3,
-      name: '布依族文化',
+      name: '布依族',
       description: '布依族有着丰富的民间文学和音乐传统，其蜡染技艺和民族服饰独具特色。',
       image: 'https://images.unsplash.com/photo-1578662994442-48f60103fc96?w=600&h=400&fit=crop',
       highlights: ['蜡染工艺', '山歌对唱', '传统节庆', '民族服饰'],
@@ -103,6 +104,7 @@ const cultureData = {
 const CultureHome = () => {
   const [activeSection, setActiveSection] = useState('culture');
   const navigate = useNavigate();
+  const { t } = useLanguage();  // 添加这行
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -123,62 +125,49 @@ const CultureHome = () => {
     }
   };
 
+  const cultureNameToKey = {
+    '苗族': 'miao',
+    '侗族': 'dong',
+    '布依族': 'bouyei'
+    // 如果有其他民族，可以继续添加
+  };
+
   return (
     <div className="culture-home">
       {/* 英雄区域 */}
-      <motion.section 
-        className="hero-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+      <motion.section className="hero-section">
         <div className="hero-background">
           <div className="hero-overlay"></div>
           <img 
             src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop" 
-            alt="少数民族文化"
+            alt={t('explore_colorful_guizhou')}
             className="hero-image"
           />
         </div>
         <div className="hero-content">
-          <motion.h1 
-            className="hero-title"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            探索多彩贵州
+          <motion.h1 className="hero-title">
+            {t('explore_colorful_guizhou')}
           </motion.h1>
-          <motion.p 
-            className="hero-subtitle"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            感受少数民族文化魅力 · 体验村超激情 · 发现绝美景点
+          <motion.p className="hero-subtitle">
+            {t('culture_slogan')}
           </motion.p>
-          <motion.div 
-            className="hero-stats"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <motion.div className="hero-stats">
             <div className="stat-item">
               <FiUsers size={24} />
-              <span>48个民族</span>
+              <span>{t('ethnic_groups')}</span>
             </div>
             <div className="stat-item">
               <FiAward size={24} />
-              <span>村超热潮</span>
+              <span>{t('village_football')}</span>
             </div>
             <div className="stat-item">
               <FiCamera size={24} />
-              <span>世界遗产</span>
+              <span>{t('world_heritage')}</span>
             </div>
           </motion.div>
         </div>
       </motion.section>
-
+  
       {/* 导航标签 */}
       <div className="section-nav">
         <div className="container">
@@ -188,26 +177,26 @@ const CultureHome = () => {
               onClick={() => setActiveSection('culture')}
             >
               <FiUsers size={20} />
-              民族文化
+              {t('ethnic_culture')}
             </button>
             <button 
               className={`nav-tab ${activeSection === 'football' ? 'active' : ''}`}
               onClick={() => setActiveSection('football')}
             >
               <FiAward size={20} />
-              村超比赛
+              {t('village_super')}
             </button>
             <button 
               className={`nav-tab ${activeSection === 'spots' ? 'active' : ''}`}
               onClick={() => setActiveSection('spots')}
             >
               <FiMapPin size={20} />
-              精彩景点
+              {t('scenic_spots')}
             </button>
           </div>
         </div>
       </div>
-
+  
       <div className="container">
         {/* 民族文化区域 */}
         {activeSection === 'culture' && (
@@ -218,12 +207,12 @@ const CultureHome = () => {
             animate="visible"
           >
             <div className="section-header">
-              <h2>多彩民族文化</h2>
-              <p>探索贵州丰富多彩的少数民族文化传统</p>
+              <h2>{t('diverse_ethnic_culture')}</h2>
+              <p>{t('explore_ethnic_traditions')}</p>
             </div>
             
             <div className="culture-grid">
-              {cultureData.ethnicCultures.map((culture, index) => (
+              {cultureData.ethnicCultures.map((culture) => (
                 <motion.div 
                   key={culture.id} 
                   className="culture-card"
@@ -232,22 +221,17 @@ const CultureHome = () => {
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="culture-image">
-                    <img src={culture.image} alt={culture.name} />
+                    <img src={culture.image} alt={t(`${culture.name.toLowerCase()}_culture`)} />
                     <div className="culture-overlay">
                       <FiMapPin size={16} />
                       <span>{culture.region}</span>
                     </div>
                   </div>
                   <div className="culture-content">
-                    <h3>{culture.name}</h3>
-                    <p>{culture.description}</p>
-                    <div className="culture-highlights">
-                      {culture.highlights.map((highlight, idx) => (
-                        <span key={idx} className="highlight-tag">{highlight}</span>
-                      ))}
-                    </div>
+                    <h3>{t(`${cultureNameToKey[culture.name]}_culture`)}</h3>
+                    <p>{t(`${cultureNameToKey[culture.name]}_description`)}</p>
                     <Link to="/" className="explore-btn">
-                      了解更多 <FiChevronRight size={16} />
+                      {t('learn_more')} <FiChevronRight size={16} />
                     </Link>
                   </div>
                 </motion.div>
@@ -255,7 +239,7 @@ const CultureHome = () => {
             </div>
           </motion.section>
         )}
-
+  
         {/* 村超比赛区域 */}
         {activeSection === 'football' && (
           <motion.section 
@@ -265,8 +249,8 @@ const CultureHome = () => {
             animate="visible"
           >
             <div className="section-header">
-              <h2>村超风采</h2>
-              <p>感受乡村足球的激情与少数民族文化的完美融合</p>
+              <h2>{t('village_super_style')}</h2>
+              <p>{t('village_football_culture')}</p>
             </div>
             
             <div className="football-grid">
@@ -279,42 +263,21 @@ const CultureHome = () => {
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="football-image">
-                    <img src={match.image} alt={match.title} />
+                    <img src={match.image} alt={t(index === 0 ? 'rongjiang_tournament' : 'danzhai_tournament')} />
                     <div className="football-badge">
                       <FiAward size={20} />
                     </div>
                   </div>
                   <div className="football-content">
-                    <h3>{match.title}</h3>
-                    <p>{match.description}</p>
-                    
-                    <div className="football-info">
-                      <div className="info-item">
-                        <FiCalendar size={16} />
-                        <span>{match.date}</span>
-                      </div>
-                      <div className="info-item">
-                        <FiMapPin size={16} />
-                        <span>{match.location}</span>
-                      </div>
-                      <div className="info-item">
-                        <FiUsers size={16} />
-                        <span>{match.participants}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="football-features">
-                      {match.features.map((feature, idx) => (
-                        <span key={idx} className="feature-tag">{feature}</span>
-                      ))}
-                    </div>
+                    <h3>{t(index === 0 ? 'rongjiang_tournament' : 'danzhai_tournament')}</h3>
+                    <p>{t(index === 0 ? 'rongjiang_description' : 'danzhai_description')}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.section>
         )}
-
+  
         {/* 景点区域 */}
         {activeSection === 'spots' && (
           <motion.section 
@@ -324,8 +287,8 @@ const CultureHome = () => {
             animate="visible"
           >
             <div className="section-header">
-              <h2>绝美景点</h2>
-              <p>发现贵州的自然奇观与文化瑰宝</p>
+              <h2>{t('beautiful_attractions')}</h2>
+              <p>{t('discover_natural_wonders')}</p>
             </div>
             
             <div className="spots-grid">
@@ -338,32 +301,24 @@ const CultureHome = () => {
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="spot-image">
-                    <img src={spot.image} alt={spot.name} />
-                    <div className="spot-type">{spot.type}</div>
-                    <div className="spot-rating">
-                      <FiStar size={14} fill="currentColor" />
-                      <span>{spot.rating}</span>
-                    </div>
+                    <img src={spot.image} alt={t(index === 0 ? 'huangguoshu_waterfall' : 
+                      index === 1 ? 'libo_description' : 
+                      index === 2 ? 'xijiang_description' : 'zhaoxing_description')} />
                   </div>
                   <div className="spot-content">
-                    <h3>{spot.name}</h3>
-                    <div className="spot-location">
-                      <FiMapPin size={14} />
-                      <span>{spot.location}</span>
-                    </div>
-                    <p>{spot.description}</p>
-                    <div className="spot-highlights">
-                      {spot.highlights.map((highlight, idx) => (
-                        <span key={idx} className="highlight-tag">{highlight}</span>
-                      ))}
-                    </div>
+                    <h3>{t(index === 0 ? 'huangguoshu_waterfall' : 
+                      index === 1 ? 'libo_description' : 
+                      index === 2 ? 'xijiang_description' : 'zhaoxing_description')}</h3>
+                    <p>{t(index === 0 ? 'huangguoshu_description' : 
+                      index === 1 ? 'libo_description' : 
+                      index === 2 ? 'xijiang_description' : 'zhaoxing_description')}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.section>
         )}
-
+  
         {/* 行动召唤区域 */}
         <motion.section 
           className="cta-section"
@@ -372,14 +327,14 @@ const CultureHome = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="cta-content">
-            <h2>加入我们的社区</h2>
-            <p>分享你的贵州之旅，记录美好时光</p>
+            <h2>{t('join_community')}</h2>
+            <p>{t('share_travel_memories')}</p>
             <div className="cta-buttons">
               <Link to="/guides" className="btn btn-primary">
-                找个主理人
+                {t('find_guide')}
               </Link>
               <Link to="/community" className="btn btn-secondary">
-                探索社区
+                {t('explore_community')}
               </Link>
             </div>
           </div>
