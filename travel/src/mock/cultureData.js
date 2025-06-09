@@ -1,29 +1,56 @@
+// 添加CDN基础URL配置
+const IMAGE_BASE_URL = "https://imagevsl1.oss-cn-chengdu.aliyuncs.com/";
+
 export const cultureData = {
   zh: {
     ethnicCultures: [
       {
-        id: 1,
-        name: '苗族文化',
-        description: '苗族是一个历史悠久的民族，以其精美的银饰、绚丽的服装和独特的歌舞文化而闻名。',
-        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['银饰工艺', '苗族歌舞', '传统服饰', '芦笙节'],
-        region: '贵州、湖南、云南'
+        id: 'n1',
+        name: '侗族木构建筑营造技艺',
+        description: '侗族鼓楼与花桥为独特木构建筑，鼓楼集塔阁亭于一体，花桥以杉木穿榫工艺建造，运用杠杆原理。匠人以竹尺"匠杆"及符号体系设计，师徒传承。',
+        image: `${IMAGE_BASE_URL}gheritage/1.png`,
+        highlights: ['传统技艺', '木构建筑', '鼓楼建造', '花桥工艺'],
+        region: '黎平县、从江县、榕江县'
       },
       {
-        id: 2,
-        name: '侗族文化',
-        description: '侗族以其独特的建筑艺术——风雨桥和鼓楼，以及美妙的侗族大歌而著称于世。',
-        image: 'https://images.unsplash.com/photo-1585068529053-1d4e24a6e2b6?w=600&h=400&fit=crop',
-        highlights: ['侗族大歌', '风雨桥', '鼓楼建筑', '织锦技艺'],
-        region: '贵州、广西、湖南'
+        id: 'n2',
+        name: '瑶族医药（药浴疗法）',
+        description: '瑶族药浴源自贵州从江，以草药煮水浸浴，祛风除湿、活血排毒，为百年传统养生秘方，绿色无副作用，亟待保护传承。',
+        image: `${IMAGE_BASE_URL}gheritage/3.png`,
+        highlights: ['传统医药', '药浴疗法', '养生文化', '民族医学'],
+        region: '从江县、黎平县'
       },
       {
-        id: 3,
-        name: '布依族文化',
-        description: '布依族有着丰富的民间文学和音乐传统，其蜡染技艺和民族服饰独具特色。',
-        image: 'https://images.unsplash.com/photo-1578662994442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['蜡染工艺', '山歌对唱', '传统节庆', '民族服饰'],
-        region: '贵州、云南'
+        id: 'n3',
+        name: '侗族大歌',
+        description: '侗族大歌"嘎老"源于宋代，以多声部合唱为特色，含鼓楼大歌、声音大歌等类型，承载侗族历史、婚俗与文化。',
+        image: `${IMAGE_BASE_URL}gheritage/5.png`,
+        highlights: ['传统音乐', '多声部合唱', '民族文化', '历史传承'],
+        region: '黎平县、从江县、榕江县'
+      },
+      {
+        id: 'n6',
+        name: '侗戏',
+        description: '侗戏起源于清嘉庆年间，由吴文彩基于侗族叙事歌与汉族说唱创立，流行于黔湘桂侗寨。融合多剧种元素，曲调丰富，表演朴实，代表剧目《珠郎娘美》。',
+        image: `${IMAGE_BASE_URL}gheritage/11.png`,
+        highlights: ['传统戏剧', '民族表演', '文化融合', '口传艺术'],
+        region: '黎平县、从江县、榕江县'
+      },
+      {
+        id: 'n7',
+        name: '侗族萨玛节',
+        description: '侗族萨玛节是贵州榕江等地祭祀大祖母萨玛的传统节日，体现母系遗风。农历正月/二月全寨祭"然萨"，妇女为主绕寨歌舞"多耶"，祈求安康丰收。',
+        image: `${IMAGE_BASE_URL}gheritage/13.png`,
+        highlights: ['传统节庆', '祭祀文化', '民族信仰', '歌舞艺术'],
+        region: '黎平县、从江县、榕江县'
+      },
+      {
+        id: 'n8',
+        name: '侗族款约',
+        description: '贵州省黎平县侗族款约是侗族传统社会组织形式，以民主协商制定民间规约维系社会秩序，具有原始氏族特征。款约由群众商定、款首监督执行。',
+        image: `${IMAGE_BASE_URL}gheritage/15.png`,
+        highlights: ['民俗文化', '社会组织', '民主协商', '传统治理'],
+        region: '黎平县、从江县、榕江县'
       }
     ],
     villageFootball: [
@@ -74,28 +101,52 @@ export const cultureData = {
   en: {
     ethnicCultures: [
       {
-        id: 1,
-        name: 'Miao Culture',
-        description: 'The Miao people have a long history and are famous for their exquisite silver ornaments, colorful costumes, and unique song and dance culture.',
-        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['Silver Craft', 'Miao Dance', 'Traditional Costume', 'Lusheng Festival'],
-        region: 'Guizhou, Hunan, Yunnan'
+        id: 'n1',
+        name: 'The Craftsmanship of Dong Ethnic Group\'s Wooden Architecture',
+        description: 'Exemplifying unique timber-framed architecture, Dong Drum Towers integrate pagoda, pavilion, and tower designs, while Flower Bridges are constructed using fir-wood mortise-tenon joints based on lever mechanics.',
+        image: `${IMAGE_BASE_URL}gheritage/1.png`,
+        highlights: ['Traditional Craftsmanship', 'Wooden Architecture', 'Drum Tower', 'Bridge Building'],
+        region: 'Liping County, Congjiang County, Rongjiang County'
       },
       {
-        id: 2,
-        name: 'Dong Culture',
-        description: 'The Dong people are known for their unique architectural art - Wind and Rain Bridges and Drum Towers, as well as the beautiful Dong Grand Song.',
-        image: 'https://images.unsplash.com/photo-1585068529053-1d4e24a6e2b6?w=600&h=400&fit=crop',
-        highlights: ['Dong Grand Song', 'Wind & Rain Bridge', 'Drum Tower', 'Brocade Art'],
-        region: 'Guizhou, Guangxi, Hunan'
+        id: 'n2',
+        name: 'The Herbal Medicine of the Yao Ethnic Group (Yaoyu Herbal Bath Therapy)',
+        description: 'Originating in Congjiang, Guizhou, this centennial wellness tradition involves medicinal herb decoctions for rheumatism relief and detoxification.',
+        image: `${IMAGE_BASE_URL}gheritage/3.png`,
+        highlights: ['Traditional Medicine', 'Herbal Bath', 'Wellness Culture', 'Ethnic Medicine'],
+        region: 'Congjiang County, Liping County'
       },
       {
-        id: 3,
-        name: 'Buyi Culture',
-        description: 'The Buyi people have a rich tradition of folk literature and music, with distinctive batik crafts and ethnic costumes.',
-        image: 'https://images.unsplash.com/photo-1578662994442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['Batik Craft', 'Mountain Songs', 'Traditional Festivals', 'Ethnic Costume'],
-        region: 'Guizhou, Yunnan'
+        id: 'n3',
+        name: 'Grand Song of the Dong Ethnic Group',
+        description: 'Documented since the Song Dynasty, this a cappella tradition features multipart harmonies with subtypes like Drum Tower Grand Songs and Nature Sound Songs.',
+        image: `${IMAGE_BASE_URL}gheritage/5.png`,
+        highlights: ['Traditional Music', 'Multipart Harmony', 'Cultural Heritage', 'Historical Legacy'],
+        region: 'Liping County, Congjiang County, Rongjiang County'
+      },
+      {
+        id: 'n6',
+        name: 'Dong Opera',
+        description: 'Dong Opera originated in the Jiaqing Emperor period of the Qing Dynasty, founded by Wu Wencai, combining narrative songs of Dong people and Han raps, featuring rich tunes and simple performances.',
+        image: `${IMAGE_BASE_URL}gheritage/11.png`,
+        highlights: ['Traditional Drama', 'Ethnic Performance', 'Cultural Fusion', 'Oral Art'],
+        region: 'Liping County, Congjiang County, Rongjiang County'
+      },
+      {
+        id: 'n7',
+        name: 'Sama Worship Festival of the Dong Ethnic Group',
+        description: 'A traditional festival honoring Great Grandmother Sama, reflecting matriarchal practices. The whole village participates in "Ransa" worship, with women performing "Duoye" dances.',
+        image: `${IMAGE_BASE_URL}gheritage/13.png`,
+        highlights: ['Traditional Festival', 'Worship Culture', 'Ethnic Beliefs', 'Song and Dance'],
+        region: 'Liping County, Congjiang County, Rongjiang County'
+      },
+      {
+        id: 'n8',
+        name: 'Regulations and Practices of the Dong Ethnic Group',
+        description: 'As a traditional self-governance mechanism with clan democracy features, this oral legal system involves community-negotiated codes enforced by Kuan leaders.',
+        image: `${IMAGE_BASE_URL}gheritage/15.png`,
+        highlights: ['Folk Culture', 'Social Organization', 'Democratic Consultation', 'Traditional Governance'],
+        region: 'Liping County, Congjiang County, Rongjiang County'
       }
     ],
     villageFootball: [
@@ -146,28 +197,52 @@ export const cultureData = {
   ja: {
     ethnicCultures: [
       {
-        id: 1,
-        name: 'ミャオ族文化',
-        description: 'ミャオ族は長い歴史を持つ民族で、精巧な銀細工、カラフルな衣装、そして独特の歌と踊りの文化で知られています。',
-        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['銀細工', 'ミャオ族の踊り', '伝統衣装', 'ルーシェン祭り'],
-        region: '貴州、湖南、雲南'
+        id: 'n1',
+        name: 'トン族木造建築構築技術',
+        description: '侗族の鼓楼と花橋は独特な木造建築です。鼓楼は塔、楼閣、亭という三者を含めます。花橋は杉で貫きほぞ工法により建てられ、梃子の原理を活用しました。',
+        image: `${IMAGE_BASE_URL}gheritage/1.png`,
+        highlights: ['伝統工芸', '木造建築', '鼓楼建設', '花橋技術'],
+        region: '黎平県、従江県、榕江県'
       },
       {
-        id: 2,
-        name: 'トン族文化',
-        description: 'トン族は独特の建築芸術である風雨橋と鼓楼、そして美しいトン族の大歌で世界的に知られています。',
-        image: 'https://images.unsplash.com/photo-1585068529053-1d4e24a6e2b6?w=600&h=400&fit=crop',
-        highlights: ['トン族の大歌', '風雨橋', '鼓楼建築', '錦織り技術'],
-        region: '貴州、広西、湖南'
+        id: 'n2',
+        name: 'ヤオ族医薬（薬浴療法）',
+        description: 'ヤオ族薬浴療法は、中国貴州省従江県に伝承される伝統医療技法です。天然の薬草を煎じた湯に浸かることで、風邪を治し、湿気を取り除き、血行を促し、毒を解けるという百年にわたり受け継がれてきました。',
+        image: `${IMAGE_BASE_URL}gheritage/3.png`,
+        highlights: ['伝統医学', '薬浴療法', '養生文化', '民族医学'],
+        region: '従江県、黎平県'
       },
       {
-        id: 3,
-        name: 'プイ族文化',
-        description: 'プイ族は豊かな民間文学と音楽の伝統を持ち、その蝋染め技術と民族衣装は独特の特徴を持っています。',
-        image: 'https://images.unsplash.com/photo-1578662994442-48f60103fc96?w=600&h=400&fit=crop',
-        highlights: ['蝋染め工芸', '山歌', '伝統祭り', '民族衣装'],
-        region: '貴州、雲南'
+        id: 'n3',
+        name: 'トン族大歌',
+        description: 'トン族の大歌「嘎老」（ガーラオ）は宋から歌い始め、多声部の合唱という特色を持ち、鼓楼大歌や声音大歌などの形を含めます。',
+        image: `${IMAGE_BASE_URL}gheritage/5.png`,
+        highlights: ['伝統音楽', '多声部合唱', '民族文化', '歴史伝承'],
+        region: '黎平県、従江県、榕江県'
+      },
+      {
+        id: 'n6',
+        name: 'トン劇',
+        description: 'トン族の演劇は清の嘉慶年間からはじめ、呉文彩という人がトン族の叙事歌と漢族の語り物を基に作り、複数の劇種の要素を融合し、曲調が豊かで、演技は素朴です。',
+        image: `${IMAGE_BASE_URL}gheritage/11.png`,
+        highlights: ['伝統演劇', '民族芸能', '文化融合', '口承芸術'],
+        region: '黎平県、従江県、榕江県'
+      },
+      {
+        id: 'n7',
+        name: 'トン族サマ祭り',
+        description: 'トン族のサマ祭りは、大祖母サマを祀る伝統的な祭りで、母系社会の名残りを表しています。旧暦の正月または二月に村全体で「然サ」を祀り、女性たちが主体となって「多耶」を踊ります。',
+        image: `${IMAGE_BASE_URL}gheritage/13.png`,
+        highlights: ['伝統祭礼', '祭祀文化', '民族信仰', '歌舞芸能'],
+        region: '黎平県、従江県、榕江県'
+      },
+      {
+        id: 'n8',
+        name: '規約習俗（トン族カンヤク）',
+        description: 'トン族の「款約」は伝統的な社会組織形態で、民主的な話し合いによって民間の規約を制定し、社会秩序を維持するもので、原始的な氏族の特徴を持っています。',
+        image: `${IMAGE_BASE_URL}gheritage/15.png`,
+        highlights: ['民俗文化', '社会組織', '民主協議', '伝統統治'],
+        region: '黎平県、従江県、榕江県'
       }
     ],
     villageFootball: [

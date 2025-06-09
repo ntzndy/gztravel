@@ -1,0 +1,16 @@
+{
+  "search_placeholder": "Search attractions, culture, experiences...",
+  "nav": {
+    "home": "Home",
+    "community": "Community",
+    "guides": "Guides",
+    "publish": "Publish",
+    "profile": "Profile",
+    "toggle_menu": "Toggle Menu"
+  },
+  "language": {
+    "zh": "Chinese",
+    "en": "English",
+    "ja": "Japanese"
+  }
+} 

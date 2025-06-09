@@ -76,7 +76,7 @@
 
 .guide-detail-container {
   max-width: 800px;
-  margin: 32px auto 0 auto; /* 原来是 -48px，改为正值 */
+  margin: 32px auto 0 auto;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);

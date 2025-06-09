@@ -174,14 +174,23 @@
 }
 
 .team h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: #333;
+  margin: 0;
+}
+
+.team .score {
+  font-size: 1.1rem;
+  color: #ff6b6b;
+  margin-top: 4px;
 }
 
 .vs {
   font-size: 1.2rem;
   font-weight: 600;
   color: #666;
+  margin: 0 20px;
 }
 
 .schedule-info {
@@ -356,4 +365,111 @@
 
 .error-message button:hover {
   background-color: #ff5252;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .football-hero {
+    height: 300px;
+  }
+
+  .hero-content {
+    padding: 80px 20px;
+  }
+
+  .schedule-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .schedule-date {
+    padding-right: 0;
+    padding-bottom: 16px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .schedule-teams {
+    gap: 12px;
+  }
+
+  .team img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .team h3 {
+    font-size: 1rem;
+  }
+
+  .team .score {
+    font-size: 1rem;
+  }
+
+  .vs {
+    margin: 0 12px;
+    font-size: 1rem;
+  }
+
+  .schedule-info {
+    padding-left: 0;
+    padding-top: 16px;
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tab-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .container {
+    padding: 20px 16px;
+  }
+
+  .back-button {
+    top: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 小屏幕手机适配 */
+@media screen and (max-width: 375px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .schedule-teams {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .vs {
+    margin: 8px 0;
+  }
+
+  .highlight-card {
+    margin: 0 -16px;
+    border-radius: 0;
+  }
 } 

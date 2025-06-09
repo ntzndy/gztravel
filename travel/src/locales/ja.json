@@ -1,0 +1,16 @@
+{
+  "search_placeholder": "観光地、文化、体験を検索...",
+  "nav": {
+    "home": "ホーム",
+    "community": "コミュニティ",
+    "guides": "ガイド",
+    "publish": "投稿",
+    "profile": "マイページ",
+    "toggle_menu": "メニュー切り替え"
+  },
+  "language": {
+    "zh": "中国語",
+    "en": "英語",
+    "ja": "日本語"
+  }
+} 

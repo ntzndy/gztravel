@@ -41,26 +41,42 @@ export const mockOrders: Record<number, Order> = {
     description: '深度体验苗族文化，包含传统服饰试穿、银饰制作体验、苗族歌舞欣赏等项目。专业导游全程陪同，让您深入了解苗族的历史文化和民俗风情。',
     guide: {
       id: 1,
-      name: '小红',
+      name: { zh: '小红', en: 'Xiaohong', ja: 'シャオホン' },
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612c03c?w=150&h=150&fit=crop&crop=face',
-      title: '资深导游 | 民族文化专家',
+      title: { zh: '资深导游 | 民族文化专家', en: 'Senior Guide | Ethnic Culture Expert', ja: 'ベテランガイド | 民族文化専門家' },
       rating: 4.9,
       reviewCount: 328,
       yearsOfExperience: 8,
       languages: ['中文', '英语', '苗语'],
-      specialties: ['民族文化', '摄影指导', '美食推荐'],
+      specialties: {
+        zh: ['民族文化', '摄影指导', '美食推荐'],
+        en: ['Ethnic Culture', 'Photography Guidance', 'Food Recommendations'],
+        ja: ['民族文化', '写真指導', '美食推薦']
+      },
       coverImage: 'https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
       price: '¥800/天起',
       availability: '最快明天可约',
-      bio: '专注于苗族文化体验导游服务',
+      bio: {
+        zh: '专注于苗族文化体验导游服务',
+        en: 'Focused on Miao ethnic culture experience guide services',
+        ja: '苗族文化体験ガイドサービスに特化'
+      },
       gallery: [
         'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
         'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
       ],
       serviceArea: '贵州全境、黔东南苗族侗族自治州',
       contact: '138****8888',
-      honors: ['2022年度优秀导游', '民族文化推广大使'],
-      tags: ['耐心细致', '路线丰富', '摄影达人'],
+      honors: {
+        zh: ['2022年度优秀导游', '民族文化推广大使'],
+        en: ['2022 Outstanding Guide', 'Ethnic Culture Ambassador'],
+        ja: ['2022年優秀ガイド', '民族文化大使']
+      },
+      tags: {
+        zh: ['耐心细致', '路线丰富', '摄影达人'],
+        en: ['Patient and Detailed', 'Rich Routes', 'Photography Expert'],
+        ja: ['忍耐強く細かい', '豊富なルート', '写真の達人']
+      },
       reviews: [
         { user: '游客A', content: '小红非常专业，讲解很细致，体验感满分！', date: '2024-05-12' },
         { user: '游客B', content: '带我们深入苗寨，感受了不一样的民族风情。', date: '2024-04-28' }

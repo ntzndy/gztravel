@@ -9,12 +9,11 @@ import Publish from './pages/pubulish/Publish';
 import GuideService from './pages/guide/GuideService';
 import AttractionDetail from './pages/home/AttractionDetail';
 import FootballDetail from './pages/home/FootballDetail';
-import CultureDetail from './pages/home/CultureDetail';
 import PostDetail from './pages/post/PostDetail';
 import OrderDetail from './pages/order/OrderDetail';
 import GuideDetail from './pages/guide/GuideDetail';
-import CommunityPostDetail from './pages/post/PostDetail';
 import UserProfile from './pages/community/UserProfile';
+import CultureDetail from './pages/home/CultureDetail';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
 
@@ -35,11 +34,11 @@ function App() {
               <Route path="/publish" element={<Publish />} />
               <Route path="/attraction/:id" element={<AttractionDetail />} />
               <Route path="/football/:id" element={<FootballDetail />} />
-              <Route path="/culture/:id" element={<CultureDetail />} />
               <Route path="/post/:id" element={<PostDetail />} />
               <Route path="/order/:id" element={<OrderDetail />} />
               <Route path="/guide/:id" element={<GuideDetail />} />
               <Route path="/user/:userName" element={<UserProfile />} />
+              <Route path="/culture/:id" element={<CultureDetail />} />
             </Routes>
           </AnimatePresence>
         </main>

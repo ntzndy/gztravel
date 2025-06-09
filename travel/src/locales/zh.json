@@ -1,0 +1,16 @@
+{
+  "search_placeholder": "搜索景点、文化、体验...",
+  "nav": {
+    "home": "首页",
+    "community": "社区",
+    "guides": "导游",
+    "publish": "发布",
+    "profile": "我的",
+    "toggle_menu": "切换菜单"
+  },
+  "language": {
+    "zh": "中文",
+    "en": "English",
+    "ja": "日本語"
+  }
+} 

@@ -1,13 +1,20 @@
 // 多语言翻译配置
 export const translations = {
   zh: {
-    // Header
-    search_placeholder: "搜索你感兴趣的内容...",
-    home: "首页",
-    community: "社区",
-    guides: "主理人",
-    publish: "发布",
-    profile: "我的",
+    search_placeholder: "搜索景点、文化、体验...",
+    nav: {
+      home: "首页",
+      community: "社区",
+      guides: "导游",
+      publish: "发布",
+      profile: "我的",
+      toggle_menu: "切换菜单"
+    },
+    language: {
+      zh: "中文",
+      en: "English",
+      ja: "日本語"
+    },
     
     // Culture Home
     explore_colorful_guizhou: "探索多彩贵州",
@@ -93,13 +100,20 @@ export const translations = {
   },
   
   en: {
-    // Header
-    search_placeholder: "Search content that interests you...",
-    home: "Home",
-    community: "Community",
-    guides: "Guides",
-    publish: "Publish",
-    profile: "Profile",
+    search_placeholder: "Search attractions, culture, experiences...",
+    nav: {
+      home: "Home",
+      community: "Community",
+      guides: "Guides",
+      publish: "Publish",
+      profile: "Profile",
+      toggle_menu: "Toggle Menu"
+    },
+    language: {
+      zh: "Chinese",
+      en: "English",
+      ja: "Japanese"
+    },
     
     // Culture Home
     explore_colorful_guizhou: "Explore Colorful Guizhou",
@@ -185,13 +199,20 @@ export const translations = {
   },
   
   ja: {
-    // Header
-    search_placeholder: "興味のあるコンテンツを検索...",
-    home: "ホーム",
-    community: "コミュニティ",
-    guides: "ガイド",
-    publish: "投稿",
-    profile: "プロフィール",
+    search_placeholder: "観光地、文化、体験を検索...",
+    nav: {
+      home: "ホーム",
+      community: "コミュニティ",
+      guides: "ガイド",
+      publish: "投稿",
+      profile: "マイページ",
+      toggle_menu: "メニュー切り替え"
+    },
+    language: {
+      zh: "中国語",
+      en: "英語",
+      ja: "日本語"
+    },
     
     // Culture Home
     explore_colorful_guizhou: "カラフルな貴州を探検",
@@ -279,5 +300,22 @@ export const translations = {
 
 // 获取翻译文本的函数
 export const getTranslation = (key, language = 'zh') => {
-  return translations[language]?.[key] || translations['zh'][key] || key;
+  // 支持嵌套的翻译键（如 'nav.home'）
+  const keys = key.split('.');
+  let translation = translations[language];
+  
+  for (const k of keys) {
+    translation = translation?.[k];
+    if (translation === undefined) {
+      // 如果找不到翻译，尝试使用中文翻译
+      translation = translations['zh'];
+      for (const fallbackKey of keys) {
+        translation = translation?.[fallbackKey];
+        if (translation === undefined) break;
+      }
+      break;
+    }
+  }
+  
+  return translation || key;
 }; 

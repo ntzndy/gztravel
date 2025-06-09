@@ -67,6 +67,8 @@ const CultureHome = () => {
           >
             {t.hero.subtitle}
           </motion.p>
+          
+          {/* 统计数据 */}
           <motion.div 
             className="hero-stats"
             initial={{ y: 30, opacity: 0 }}
@@ -76,47 +78,53 @@ const CultureHome = () => {
             <div className="stat-item">
               <FiUsers size={24} />
               <span>{t.hero.stats.ethnicGroups}</span>
+              <div className="stat-number">12+</div>
             </div>
             <div className="stat-item">
               <FiAward size={24} />
               <span>{t.hero.stats.villageSoccer}</span>
+              <div className="stat-number">8+</div>
             </div>
             <div className="stat-item">
               <FiCamera size={24} />
               <span>{t.hero.stats.worldHeritage}</span>
+              <div className="stat-number">20+</div>
             </div>
           </motion.div>
         </div>
       </motion.section>
 
-      {/* 导航标签 */}
-      <div className="section-nav">
-        <div className="container">
-          <div className="nav-tabs">
-            <button 
-              className={`nav-tab ${activeSection === 'culture' ? 'active' : ''}`}
-              onClick={() => setActiveSection('culture')}
-            >
-              <FiUsers size={20} />
-              {t.nav.culture}
-            </button>
-            <button 
-              className={`nav-tab ${activeSection === 'football' ? 'active' : ''}`}
-              onClick={() => setActiveSection('football')}
-            >
-              <FiAward size={20} />
-              {t.nav.football}
-            </button>
-            <button 
-              className={`nav-tab ${activeSection === 'spots' ? 'active' : ''}`}
-              onClick={() => setActiveSection('spots')}
-            >
-              <FiMapPin size={20} />
-              {t.nav.spots}
-            </button>
-          </div>
+      {/* 导航栏 */}
+      <motion.nav 
+        className="section-nav"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="nav-tabs">
+          <button 
+            className={`nav-tab ${activeSection === 'culture' ? 'active' : ''}`}
+            onClick={() => setActiveSection('culture')}
+          >
+            <FiUsers size={18} />
+            {t.nav.culture}
+          </button>
+          <button 
+            className={`nav-tab ${activeSection === 'football' ? 'active' : ''}`}
+            onClick={() => setActiveSection('football')}
+          >
+            <FiAward size={18} />
+            {t.nav.football}
+          </button>
+          <button 
+            className={`nav-tab ${activeSection === 'spots' ? 'active' : ''}`}
+            onClick={() => setActiveSection('spots')}
+          >
+            <FiCamera size={18} />
+            {t.nav.spots}
+          </button>
         </div>
-      </div>
+      </motion.nav>
 
       <div className="container main-content">
         {/* 民族文化区域 */}

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, Share, Bookmark } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 import './PostCard.css';
 import { useNavigate } from 'react-router-dom';
 
 const PostCard = ({ post }) => {
+  const { currentLanguage } = useLanguage();
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likeCount, setLikeCount] = useState(post.likes || 0);
@@ -32,7 +34,7 @@ const PostCard = ({ post }) => {
         <div className="post-images">
           <img 
             src={post.images[0]} 
-            alt="Post content"
+            alt={post.content[currentLanguage]}
             className="post-image"
           />
           {post.images.length > 1 && (
@@ -43,13 +45,12 @@ const PostCard = ({ post }) => {
         </div>
       )}
 
-      {/* 标题和摘要 */}
+      {/* 内容区域 */}
       <div className="post-content">
-        <div className="post-title">{post.title}</div>
-        <div className="post-abstract">{post.content.slice(0, 50)}{post.content.length > 50 ? '...' : ''}</div>
-        {post.tags && post.tags.length > 0 && (
+        <div className="post-text">{post.content[currentLanguage]}</div>
+        {post.tags && post.tags[currentLanguage] && post.tags[currentLanguage].length > 0 && (
           <div className="post-tags">
-            {post.tags.map((tag, index) => (
+            {post.tags[currentLanguage].map((tag, index) => (
               <span key={index} className="post-tag">#{tag}</span>
             ))}
           </div>
@@ -58,12 +59,20 @@ const PostCard = ({ post }) => {
 
       {/* 用户信息弱化显示（含头像） */}
       <div className="post-user-weak">
-        <img className="user-avatar-weak" src={post.user.avatar} alt={post.user.name} onClick={e => {e.stopPropagation(); navigate(`/user/${encodeURIComponent(post.user.name)}`);}} style={{cursor: 'pointer'}}
+        <img 
+          className="user-avatar-weak" 
+          src={post.user.avatar} 
+          alt={post.user.name[currentLanguage]} 
+          onClick={e => {
+            e.stopPropagation();
+            navigate(`/user/${post.user.id}`);
+          }}
+          style={{cursor: 'pointer'}}
           onMouseDown={e => e.stopPropagation()}
           onTouchStart={e => e.stopPropagation()}
         />
-        <span className="user-name-weak">{post.user.name}</span>
-        <span className="post-time-weak"> · {post.timeAgo}</span>
+        <span className="user-name-weak">{post.user.name[currentLanguage]}</span>
+        <span className="post-time-weak"> · {post.timeAgo[currentLanguage]}</span>
       </div>
 
       {/* 交互按钮 */}
