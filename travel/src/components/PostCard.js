@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, Share, Bookmark } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
 import './PostCard.css';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 const PostCard = ({ post }) => {
   const { currentLanguage } = useLanguage();
@@ -21,6 +21,29 @@ const PostCard = ({ post }) => {
     setIsBookmarked(!isBookmarked);
   };
 
+  // 处理可能是多语言对象或直接字符串的情况
+  const getLocalizedContent = (content) => {
+    if (content && typeof content === 'object' && content[currentLanguage]) {
+      return content[currentLanguage];
+    }
+    return content;
+  };
+
+  // 处理可能是多语言数组或直接数组的情况
+  const getLocalizedArray = (arr) => {
+    if (arr && typeof arr === 'object' && arr[currentLanguage]) {
+      return arr[currentLanguage];
+    }
+    return arr;
+  };
+
+  // 获取本地化的内容
+  const title = post.title ? getLocalizedContent(post.title) : '';
+  const content = getLocalizedContent(post.content);
+  const tags = getLocalizedArray(post.tags) || [];
+  const userName = post.user && post.user.name ? getLocalizedContent(post.user.name) : '';
+  const timeAgo = getLocalizedContent(post.timeAgo);
+
   return (
     <motion.div 
       className="post-card"
@@ -34,7 +57,7 @@ const PostCard = ({ post }) => {
         <div className="post-images">
           <img 
             src={post.images[0]} 
-            alt={post.content[currentLanguage]}
+            alt={title || content}
             className="post-image"
           />
           {post.images.length > 1 && (
@@ -47,22 +70,23 @@ const PostCard = ({ post }) => {
 
       {/* 内容区域 */}
       <div className="post-content">
-        <div className="post-text">{post.content[currentLanguage]}</div>
-        {post.tags && post.tags[currentLanguage] && post.tags[currentLanguage].length > 0 && (
+        {title && <h2 className="post-title">{title}</h2>}
+        <p className="post-text">{content}</p>
+        {tags && tags.length > 0 && (
           <div className="post-tags">
-            {post.tags[currentLanguage].map((tag, index) => (
+            {tags.map((tag, index) => (
               <span key={index} className="post-tag">#{tag}</span>
             ))}
           </div>
         )}
       </div>
 
-      {/* 用户信息弱化显示（含头像） */}
+      {/* 用户信息弱化显示 */}
       <div className="post-user-weak">
         <img 
           className="user-avatar-weak" 
           src={post.user.avatar} 
-          alt={post.user.name[currentLanguage]} 
+          alt={userName} 
           onClick={e => {
             e.stopPropagation();
             navigate(`/user/${post.user.id}`);
@@ -71,8 +95,8 @@ const PostCard = ({ post }) => {
           onMouseDown={e => e.stopPropagation()}
           onTouchStart={e => e.stopPropagation()}
         />
-        <span className="user-name-weak">{post.user.name[currentLanguage]}</span>
-        <span className="post-time-weak"> · {post.timeAgo[currentLanguage]}</span>
+        <span className="user-name-weak">{userName}</span>
+        <span className="post-time-weak"> · {timeAgo}</span>
       </div>
 
       {/* 交互按钮 */}
