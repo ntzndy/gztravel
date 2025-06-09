@@ -11,7 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   width: 100%;
   position: relative;
 }
@@ -24,125 +24,133 @@
 }
 
 .profile-header {
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 32px;
-  margin-bottom: 24px;
+  background: linear-gradient(135deg, #f0f4fa 60%, #e0f7fa 100%);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+  padding: 44px 40px 36px 40px;
+  margin-bottom: 32px;
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: visible;
+  border: none;
   z-index: 5;
 }
 
 .profile-header::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(46, 125, 50, 0.15));
-  backdrop-filter: blur(10px);
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #4caf50 60%, #ffd93d 100%);
+  filter: blur(32px);
+  opacity: 0.18;
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .profile-info {
   display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  margin-bottom: 32px;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 0;
   position: relative;
   z-index: 1;
-  padding: 10px 50px 0 10px;
+  padding: 0;
+}
+
+.user-details,
+.user-title {
+  position: relative;
+  z-index: 2;
+  align-items: flex-start;
 }
 
 .avatar-section {
   position: relative;
   flex-shrink: 0;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-avatar {
-  width: 140px;
-  height: 140px;
+  width: 148px;
+  height: 148px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 5px solid #fff;
+  background: linear-gradient(135deg, #4caf50 60%, #ffd93d 100%) border-box;
+  box-shadow: 0 6px 32px rgba(76,175,80,0.13);
+  margin-bottom: 12px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .profile-avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  transform: scale(1.07);
+  box-shadow: 0 12px 40px rgba(76, 175, 80, 0.18);
 }
 
 .edit-avatar-btn {
   position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 36px;
-  height: 36px;
+  bottom: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--primary-color);
-  border: 3px solid white;
+  background: #4caf50;
+  border: 3px solid #fff;
   color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.18);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 2;
+  z-index: 3;
 }
 
 .edit-avatar-btn:hover {
-  background: #ff5252;
-  transform: scale(1.1) rotate(8deg);
-}
-
-.user-details {
-  flex: 1;
-  min-width: 0;
-  padding-top: 16px;
-}
-
-.user-title {
-  flex: 1;
-  min-width: 0;
+  background: #ffd93d;
+  color: #388e3c;
+  transform: scale(1.12) rotate(8deg);
 }
 
 .user-name {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 0 12px 0;
+  font-size: 2.3rem;
+  font-weight: 900;
+  margin: 0 0 6px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #000;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #222;
+  letter-spacing: 0.5px;
+  line-height: 1.18;
+  text-shadow: 0 2px 8px rgba(76,175,80,0.07);
 }
 
 .user-bio {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #333;
-  margin: 0 0 20px 0;
+  font-size: 1.13rem;
+  line-height: 1.7;
+  color: #388e3c;
+  margin: 0 0 10px 0;
   word-break: break-word;
-  opacity: 0.9;
-  max-width: 600px;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 10px 16px;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  opacity: 0.92;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 12px 20px;
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(76,175,80,0.06);
+  font-weight: 500;
 }
 
 .user-meta {
   display: flex;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 18px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 
@@ -150,17 +158,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #333;
-  font-size: 14px;
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.04);
-  border-radius: 24px;
+  color: #388e3c;
+  font-size: 15px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #e0f7fa 60%, #b2e5c2 100%);
+  border-radius: 22px;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(76,175,80,0.07);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .meta-item:hover {
-  background: rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #b2e5c2 60%, #e0f7fa 100%);
+  color: #2e7d32;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .stats-section {
@@ -945,39 +956,65 @@
   }
   
   .profile-header {
-    padding: 24px;
+    padding: 24px 8px 24px 8px;
+    border-radius: 18px;
   }
   
   .profile-header::before {
-    height: 120px;
+    width: 80px;
+    height: 80px;
+    top: -18px;
   }
   
   .profile-info {
-    padding: 10px 10px 0 10px;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  .avatar-section {
     align-items: center;
   }
   
   .profile-avatar {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .edit-avatar-btn {
+    width: 32px;
+    height: 32px;
+    bottom: 2px;
+    right: 2px;
+  }
+  
+  .user-details {
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .user-title {
+    align-items: center;
+    gap: 8px;
   }
   
   .user-name {
-    font-size: 28px;
+    font-size: 1.5rem;
     text-align: center;
   }
-
+  
   .user-bio {
-    font-size: 15px;
-    margin: 0 auto 16px;
+    font-size: 1rem;
+    padding: 10px 12px;
+    max-width: 100vw;
+    margin: 0 auto 8px;
   }
 
   .user-meta {
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
   }
-
+  
   .meta-item {
     padding: 6px 12px;
     font-size: 13px;
@@ -1031,30 +1068,36 @@
   }
   
   .profile-header {
-    padding: 20px;
+    padding: 12px 2px 16px 2px;
+    border-radius: 10px;
   }
   
   .profile-header::before {
-    height: 100px;
+    width: 48px;
+    height: 48px;
+    top: -8px;
   }
   
   .profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
   }
 
   .edit-avatar-btn {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    bottom: 0;
+    right: 0;
   }
   
   .user-name {
-    font-size: 24px;
+    font-size: 1.1rem;
   }
 
   .user-bio {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 0.92rem;
+    padding: 7px 6px;
+    border-radius: 8px;
   }
 
   .user-meta {
@@ -1062,10 +1105,11 @@
   }
 
   .meta-item {
-    padding: 5px 10px;
-    font-size: 12px;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 12px;
   }
-
+  
   .stats-section {
     padding: 20px;
     margin: 0 -20px;
@@ -1160,4 +1204,126 @@
     top: 20px;
     right: 20px;
   }
+}
+
+/* ===== 新版个人中心样式 ===== */
+.profile-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 220px;
+  background: linear-gradient(135deg, #e0f7fa 0%, #f0f4fa 100%);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  z-index: 0;
+}
+
+.profile-card {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  padding: 32px;
+  margin-top: 120px; /* 让卡片进入 cover 下方 */
+}
+
+/* 基础信息区域 */
+.pc-basic {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.pc-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pc-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: #ddd;
+}
+
+.pc-avatar-edit {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform .2s;
+}
+.pc-avatar-edit:hover { transform: scale(1.1); }
+
+.pc-info { flex: 1; min-width: 0; }
+.pc-name { font-size: 1.8rem; font-weight: 800; margin: 0 0 8px; color:#222;}
+.pc-bio { color:#555; margin:0 0 12px; line-height:1.6; }
+.pc-meta { display:flex; flex-wrap:wrap; gap:16px; color:#4caf50; font-weight:600; }
+.pc-meta svg { vertical-align: -2px; margin-right:4px; }
+
+/* 齿轮菜单 */
+.pc-gear { position:relative; }
+.gear-btn { width:44px; height:44px; background:#4caf50; border:none; color:#fff; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.12); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+.gear-btn:hover { background:#388e3c; }
+.gear-menu { position:absolute; top:110%; right:0; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.15); padding:8px 0; min-width:160px; }
+.gear-menu button { width:100%; background:none; border:none; padding:10px 16px; display:flex; align-items:center; gap:8px; font-size:14px; cursor:pointer; transition:background .2s; color:#333; }
+.gear-menu button:hover { background:#f5f5f5; }
+.gear-menu .logout { color:#e53935; font-weight:700; }
+.gear-menu .logout:hover { background:#ffebee; }
+
+/* 统计 */
+.pc-stats { display:flex; gap:24px; margin:24px 0 16px; }
+.stat { flex:1; text-align:center; background:#f9fafb; border-radius:16px; padding:16px; cursor:pointer; transition:transform .2s, box-shadow .2s;}
+.stat:hover { transform:translateY(-4px); box-shadow:0 6px 16px rgba(0,0,0,0.08);} 
+.stat span { display:block; font-size:1.6rem; font-weight:800; color:#2e7d32; margin-bottom:4px; }
+
+/* tabs */
+.pc-tabs { display:flex; gap:0; border-bottom:2px solid #eee; margin-bottom:24px; }
+.pc-tabs button { flex:1; padding:12px 0; background:none; border:none; font-size:15px; cursor:pointer; color:#555; position:relative; transition:color .2s; }
+.pc-tabs button.active { color:#4caf50; font-weight:700; }
+.pc-tabs button.active::after { content:''; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:#4caf50; }
+
+/* 内容区域 */
+.pc-content { min-height:300px; }
+.posts-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
+.orders-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px; }
+.order-card { background:#fff; border-radius:16px; box-shadow:0 2px 10px rgba(0,0,0,0.05); overflow:hidden; cursor:pointer; transition:transform .2s; }
+.order-card:hover { transform:translateY(-4px); }
+.order-card img { width:100%; height:160px; object-fit:cover; }
+.order-info { padding:12px 16px; display:flex; flex-direction:column; gap:4px; }
+.order-info h4 { margin:0; font-size:16px; font-weight:700; color:#333; }
+.order-info span { font-size:13px; color:#777; }
+.order-price { position:absolute; top:12px; right:12px; background:#ff6b6b; color:#fff; padding:4px 10px; border-radius:12px; font-size:13px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+
+.empty-display { padding:60px 0; text-align:center; color:#aaa; font-size:15px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+
+/* guest card */
+.profile-guest-card { max-width:420px; margin:140px auto 0; background:#fff; padding:40px 32px; border-radius:24px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.08); }
+.profile-guest-card svg { color:#4caf50; margin-bottom:12px; }
+.profile-guest-card h2 { margin:0 0 8px; }
+.guest-actions { display:flex; gap:16px; justify-content:center; margin-top:24px; }
+
+/* responsive */
+@media (max-width:768px){
+  .profile-card { margin-top:100px; padding:24px; }
+  .pc-basic { flex-direction:column; align-items:center; text-align:center; }
+  .pc-gear { position:absolute; top:12px; right:12px; }
+  .pc-meta { justify-content:center; }
+  .pc-stats { flex-direction:column; gap:12px; }
+  .stat { padding:12px; }
 } 

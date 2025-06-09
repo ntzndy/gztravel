@@ -1,254 +1,141 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FiMapPin, FiAward, FiShare2, FiHeart, FiImage, FiTag } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../context/LanguageContext';
+import heritageData from '../../mock/heritage';
 import './CultureDetail.css';
 
+const langMap = {
+  zh: 'zh-CN',
+  en: 'en-US',
+  ja: 'ja-JP',
+};
+
+const langSuffixMap = {
+  'zh-CN': '',
+  'en-US': '-en',
+  'ja-JP': '-ja',
+};
+
+const sectionTitles = {
+  zh: {
+    intro: '简介',
+    images: '相关图片',
+    guides: '推荐主理人',
+    guidesList: [
+      { name: '张师傅', role: '非遗传承人', btn: '联系主理人' },
+      { name: '李师傅', role: '工艺大师', btn: '联系主理人' },
+    ],
+  },
+  en: {
+    intro: 'Introduction',
+    images: 'Related Images',
+    guides: 'Recommended Hosts',
+    guidesList: [
+      { name: 'Master Zhang', role: 'ICH Inheritor', btn: 'Contact Host' },
+      { name: 'Master Li', role: 'Craftsman', btn: 'Contact Host' },
+    ],
+  },
+  ja: {
+    intro: '紹介',
+    images: '関連画像',
+    guides: 'おすすめ主理人',
+    guidesList: [
+      { name: 'チャン師匠', role: '無形文化遺産伝承者', btn: '主理人に連絡' },
+      { name: 'リー師匠', role: '工芸マスター', btn: '主理人に連絡' },
+    ],
+  },
+};
+
 const CultureDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // 只传主id，如 n1
   const navigate = useNavigate();
-  const [culture, setCulture] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { currentLanguage } = useLanguage();
+  const [heritage, setHeritage] = useState(null);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const fetchCultureData = async () => {
-      try {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // 模拟数据，实际项目中应该从API获取
-        const cultureData = {
-          id: '1',
-          name: '蜀绣',
-          description: '蜀绣是四川地区特有的传统刺绣工艺，历史悠久，工艺精湛',
-          image: '/images/culture/shuixiu.jpg',
-          category: '传统工艺',
-          region: '四川省',
-          history: '距今已有2000多年历史',
-          features: ['精细刺绣', '色彩艳丽', '针法独特', '题材广泛'],
-          characteristics: [
-            {
-              title: '独特针法',
-              description: '蜀绣以其独特的针法著称，包括滚针、戗针等数十种针法，能够精确地表现出各种细腻的图案。',
-              image: '/images/culture/needle.jpg'
-            },
-            {
-              title: '色彩运用',
-              description: '蜀绣在色彩的运用上十分讲究，常用色彩鲜艳、对比强烈的搭配，使作品更具视觉冲击力。',
-              image: '/images/culture/color.jpg'
-            },
-            {
-              title: '题材选择',
-              description: '蜀绣的题材十分丰富，包括山水、花鸟、人物等，每一种题材都有其独特的表现技法。',
-              image: '/images/culture/theme.jpg'
-            }
-          ],
-          guides: [
-            {
-              name: '张小萱',
-              title: '蜀绣体验官',
-              image: '/images/culture/guide1.jpg',
-              description: '专注蜀绣体验课程设计5年，擅长让初学者快速掌握基础针法',
-              tags: ['针法教学', '初学者友好', '趣味课程']
-            },
-            {
-              name: '李明',
-              title: '文化体验策划师',
-              image: '/images/culture/guide2.jpg',
-              description: '致力于设计创新蜀绣体验活动，让传统文化焕发新活力',
-              tags: ['创意策划', '互动体验', '团建活动']
-            }
-          ],
-          relatedCultures: [
-            {
-              id: '2',
-              name: '川茶文化',
-              image: '/images/culture/tea.jpg',
-              description: '与蜀绣同为四川重要文化遗产'
-            },
-            {
-              id: '3',
-              name: '川菜',
-              image: '/images/culture/food.jpg',
-              description: '四川饮食文化的代表'
-            }
-          ],
-          tips: [
-            '蜀绣作品需要避免阳光直射',
-            '定期进行专业清洁保养',
-            '储存时需要保持干燥通风',
-            '观赏时可以近距离欣赏针法细节'
-          ]
-        };
-        
-        setCulture(cultureData);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message || '获取文化信息失败，请稍后重试');
-        setLoading(false);
-      }
-    };
+    const lang = langMap[currentLanguage] || 'zh-CN';
+    const suffix = langSuffixMap[lang] || '';
+    const realId = id + suffix;
+    const data = heritageData.national
+      .slice(0, 6)
+      .find(item => item._id === realId && item.language === lang);
+    setHeritage(data);
+  }, [id, currentLanguage]);
 
-    fetchCultureData();
-  }, [id]);
+  const t = sectionTitles[currentLanguage] || sectionTitles.zh;
 
-  if (loading) {
-    return (
-      <div className="loading">
-        <div className="loading-spinner"></div>
-        <p>加载中...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="error-message">
-        <p>{error}</p>
-        <button onClick={() => window.location.reload()}>重试</button>
-      </div>
-    );
+  if (!heritage) {
+    return <div className="loading">加载中...</div>;
   }
 
   return (
-    <div className="culture-detail">
-      <div className="culture-hero">
-        <div className="hero-background">
-          <img src={culture.image} alt={culture.name} />
-        </div>
-        <div className="hero-overlay"></div>
-        <div className="hero-content">
+    <div className="culture-detail modern-layout">
+      {/* 头图区域 */}
+      <div className="hero-image-area">
+        <img className="hero-bg-img" src={heritage.coverImage} alt={heritage.title} />
+        <div className="hero-overlay" />
+        <div className="hero-info">
           <motion.h1 
             className="hero-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
           >
-            {culture.name}
+            {heritage.title}
           </motion.h1>
-          <motion.p 
-            className="hero-subtitle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {culture.description}
-          </motion.p>
+          <div className="hero-meta">
+            <span className="badge level-badge">{heritage.level}</span>
+            <span className="badge category-badge"><FiTag /> {heritage.category}</span>
+            <span className="badge year-badge">{heritage.year}</span>
+            <span className="badge region-badge"><FiMapPin /> {heritage.region}</span>
+          </div>
+          <div className="hero-actions">
+            <button 
+              className={`like-button ${isLiked ? 'liked' : ''}`}
+              onClick={() => setIsLiked(!isLiked)}
+            >
+              <FiHeart />
+            </button>
+            <button className="share-button">
+              <FiShare2 />
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="container">
-        <motion.div 
-          className="culture-info"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="info-grid">
-            <div className="info-item">
-              <i className="fas fa-tag"></i>
-              <span>{culture.category}</span>
-            </div>
-            <div className="info-item">
-              <i className="fas fa-map-marker-alt"></i>
-              <span>{culture.region}</span>
-            </div>
-            <div className="info-item">
-              <i className="fas fa-history"></i>
-              <span>{culture.history}</span>
-            </div>
-          </div>
+      <div className="main-cards-area">
+        {/* 简介卡片 */}
+        <motion.div className="card info-card" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+          <h2>{t.intro}</h2>
+          <p>{heritage.description}</p>
+        </motion.div>
 
-          <div className="features">
-            <h3>特色亮点</h3>
-            <div className="feature-tags">
-              {culture.features.map((feature, index) => (
-                <span key={index} className="feature-tag">{feature}</span>
+        {/* 图片组卡片 */}
+        {heritage.images && heritage.images.length > 1 && (
+          <motion.div className="card images-card" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+            <h2><FiImage /> {t.images}</h2>
+            <div className="images-list two-per-row">
+              {heritage.images.map((img, idx) => (
+                <img key={idx} src={img} alt={heritage.title + '-' + idx} />
               ))}
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
 
-        <motion.div 
-          className="culture-characteristics"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <h2>文化特点</h2>
-          <div className="characteristics-grid">
-            {culture.characteristics.map((characteristic, index) => (
-              <div key={index} className="characteristic-card">
-                <div className="characteristic-image">
-                  <img src={characteristic.image} alt={characteristic.title} />
-                </div>
-                <div className="characteristic-content">
-                  <h3>{characteristic.title}</h3>
-                  <p>{characteristic.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div 
-          className="culture-guides"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <h2>体验推荐官</h2>
+        {/* 推荐主理人卡片 */}
+        <motion.div className="card guides-card" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
+          <h2>{t.guides}</h2>
           <div className="guides-grid">
-            {culture.guides.map((guide, index) => (
-              <div key={index} className="guide-card">
-                <div className="guide-avatar">
-                  <img src={guide.image} alt={guide.name} />
-                </div>
-                <div className="guide-info">
-                  <h3>{guide.name}</h3>
-                  <div className="guide-title">{guide.title}</div>
-                  <p>{guide.description}</p>
-                  <div className="guide-tags">
-                    {guide.tags.map((tag, idx) => (
-                      <span key={idx} className="tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div 
-          className="culture-tips"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <h2>文化贴士</h2>
-          <ul className="tips-list">
-            {culture.tips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div 
-          className="related-cultures"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
-        >
-          <h2>相关文化</h2>
-          <div className="cultures-grid">
-            {culture.relatedCultures.map(culture => (
-              <div key={culture.id} className="culture-card">
-                <div className="culture-image">
-                  <img src={culture.image} alt={culture.name} />
-                </div>
-                <div className="culture-content">
-                  <h3>{culture.name}</h3>
-                  <p>{culture.description}</p>
-                </div>
+            {t.guidesList.map((guide, idx) => (
+              <div className="guide-card" key={idx}>
+                <img src={idx === 0
+                  ? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop'
+                  : 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop'} alt={guide.name} />
+                <h3>{guide.name}</h3>
+                <p>{guide.role}</p>
+                <button className="contact-button">{guide.btn}</button>
               </div>
             ))}
           </div>
