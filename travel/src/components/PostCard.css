@@ -251,5 +251,4 @@
   margin-left: 4px;
 }
 
-/* 隐藏原有用户信息样式 */
-.post-header, .user-info, .user-avatar, .user-details, .user-name, .post-time { display: none !important; } 
+/* 删除隐藏样式，保留文字显示 */ 
