@@ -3,61 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FiArrowLeft, FiMapPin, FiCalendar, FiClock, FiPhone, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import QRCode from 'qrcode';
+import { mockOrders } from '../../mock';
 import './OrderDetail.css';
-
-// 模拟订单详细数据
-const mockOrderDetails = {
-  1: {
-    id: 1,
-    orderNumber: 'GZ20241201001',
-    type: '导游服务',
-    title: '小红 - 苗族文化深度游',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-    price: '¥800',
-    originalPrice: '¥1000',
-    status: '已完成',
-    date: '2024-11-28',
-    usageDate: '2024-12-05',
-    location: '贵州雷山',
-    description: '深度体验苗族文化，包含传统服饰试穿、银饰制作体验、苗族歌舞欣赏等项目。专业导游全程陪同，让您深入了解苗族的历史文化和民俗风情。',
-    guide: {
-      name: '小红',
-      phone: '138****8888',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612c03c?w=150&h=150&fit=crop&crop=face',
-      experience: '8年经验',
-      rating: 4.9
-    },
-    itinerary: [
-      { time: '09:00', activity: '集合出发', location: '雷山县游客中心' },
-      { time: '10:00', activity: '参观西江千户苗寨', location: '西江千户苗寨景区' },
-      { time: '12:00', activity: '品尝苗族特色午餐', location: '苗家餐厅' },
-      { time: '14:00', activity: '苗族银饰制作体验', location: '银饰工坊' },
-      { time: '16:00', activity: '观看苗族歌舞表演', location: '表演广场' },
-      { time: '18:00', activity: '返程' }
-    ],
-    included: ['专业导游服务', '景区门票', '特色午餐', '银饰制作体验', '保险'],
-    excluded: ['个人消费', '交通费用', '住宿费用'],
-    notes: '请穿着舒适的服装和鞋子，带好防晒用品。如有特殊饮食要求请提前告知。'
-  },
-  2: {
-    id: 2,
-    orderNumber: 'GZ20241130002',
-    type: '景点门票',
-    title: '黄果树瀑布门票',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop',
-    price: '¥180',
-    originalPrice: '¥220',
-    status: '待使用',
-    date: '2024-11-30',
-    usageDate: '2024-12-08',
-    location: '贵州安顺',
-    description: '黄果树瀑布是中国最大的瀑布，也是世界著名大瀑布之一。门票包含黄果树大瀑布、天星桥景区、陡坡塘瀑布三个核心景区。',
-    validUntil: '2024-12-31',
-    included: ['黄果树大瀑布门票', '天星桥景区门票', '陡坡塘瀑布门票', '景区观光车'],
-    excluded: ['餐饮费用', '个人消费', '停车费'],
-    notes: '门票当日有效，请在有效期内使用。景区开放时间：8:00-18:00。'
-  }
-};
 
 const OrderDetail = () => {
   const { id } = useParams();
@@ -71,7 +18,7 @@ const OrderDetail = () => {
   useEffect(() => {
     // 模拟加载订单数据
     setTimeout(() => {
-      const orderData = mockOrderDetails[id];
+      const orderData = mockOrders[id];
       setOrder(orderData);
       setLoading(false);
     }, 800);
@@ -211,12 +158,12 @@ const OrderDetail = () => {
               <div className="guide-details">
                 <h5>{order.guide.name}</h5>
                 <div className="guide-meta">
-                  <span>{order.guide.experience}</span>
+                  <span>{order.guide.yearsOfExperience}年经验</span>
                   <span>★ {order.guide.rating}</span>
                 </div>
                 <div className="guide-contact">
                   <FiPhone size={14} />
-                  <span>{order.guide.phone}</span>
+                  <span>{order.guide.contact}</span>
                 </div>
               </div>
             </div>

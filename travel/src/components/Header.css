@@ -5,99 +5,102 @@
   right: 0;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--gray);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 15px 0;
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  gap: 20px;
 }
 
 .logo {
   text-decoration: none;
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .logo-text {
-  font-size: 24px;
-  font-weight: bold;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .search-box {
   flex: 1;
   max-width: 400px;
-  margin: 0 40px;
   position: relative;
-}
-
-.search-input {
-  width: 100%;
-  padding: 12px 16px 12px 45px;
-  border: 2px solid var(--gray);
-  border-radius: 25px;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.3s ease;
-  background: var(--light-gray);
-}
-
-.search-input:focus {
-  border-color: var(--primary-color);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+  display: flex;
+  align-items: center;
 }
 
 .search-icon {
   position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--dark-gray);
+  left: 12px;
+  color: #666;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border: none;
+  border-radius: 20px;
+  background: #f5f5f5;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+  outline: none;
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-item.active {
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.nav-item span {
+  font-size: 0.9rem;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-  color: var(--text-color);
-  padding: 8px 12px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.nav-item:hover {
-  background: var(--light-gray);
-  transform: translateY(-2px);
-}
-
-.nav-item.active {
-  color: var(--primary-color);
-  background: rgba(255, 107, 107, 0.1);
+  gap: 15px;
 }
 
 .mobile-menu {
@@ -109,51 +112,57 @@
 }
 
 .mobile-menu:hover {
-  background: var(--light-gray);
+  background: rgba(255, 107, 107, 0.1);
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .header-content {
-    height: 60px;
-  }
-  
+@media (max-width: 1024px) {
   .search-box {
-    margin: 0 20px;
-    max-width: 200px;
+    max-width: 300px;
   }
-  
-  .nav-menu {
+
+  .nav-item span {
     display: none;
   }
-  
-  .header-actions {
-    margin-right: 10px;
+
+  .nav-item {
+    padding: 8px;
   }
-  
-  .mobile-menu {
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    display: none;
+  }
+
+  .nav-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .nav-item span {
     display: block;
+    font-size: 0.7rem;
   }
-  
-  .logo-text {
-    font-size: 20px;
+
+  .header-actions {
+    margin-left: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .search-box {
-    margin: 0 10px;
-    max-width: 150px;
-  }
-  
-  .search-input {
-    padding: 10px 12px 10px 35px;
-    font-size: 12px;
-  }
-  
-  .search-icon {
-    left: 10px;
-    width: 16px;
-    height: 16px;
+  .logo-text {
+    font-size: 1.2rem;
   }
 } 

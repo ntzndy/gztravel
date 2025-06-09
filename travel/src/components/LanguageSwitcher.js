@@ -7,7 +7,11 @@ const LanguageSwitcher = () => {
   const { currentLanguage, changeLanguage, getSupportedLanguages } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   
-  const languages = getSupportedLanguages();
+  const languages = [
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' }
+  ];
 
   const handleLanguageChange = (languageCode) => {
     changeLanguage(languageCode);

@@ -15,39 +15,32 @@ import OrderDetail from './pages/order/OrderDetail';
 import GuideDetail from './pages/guide/GuideDetail';
 import CommunityPostDetail from './pages/post/PostDetail';
 import UserProfile from './pages/community/UserProfile';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import './App.css';
 
 function App() {
   const location = useLocation();
+
   return (
     <LanguageProvider>
       <div className="App">
         <Header />
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<CultureHome />} />
-            <Route path="/community" element={<CommunityHome />} />
-            <Route path="/guides" element={<GuideService />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/publish" element={<Publish />} />
-            <Route path="/attraction/:id" element={<AttractionDetail />} />
-            <Route path="/football/:id" element={<FootballDetail />} />
-            <Route path="/culture/:id" element={<CultureDetail />} />
-            <Route path="/post/:id" element={<PostDetail />} />
-            <Route path="/order/:id" element={<OrderDetail />} />
-            <Route path="/guide/:id" element={<GuideDetail />} />
-            <Route path="/user/:userName" element={<UserProfile />} />
-          </Routes>
           <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.35 }}
-            >
-            </motion.div>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<CultureHome />} />
+              <Route path="/community" element={<CommunityHome />} />
+              <Route path="/guides" element={<GuideService />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/publish" element={<Publish />} />
+              <Route path="/attraction/:id" element={<AttractionDetail />} />
+              <Route path="/football/:id" element={<FootballDetail />} />
+              <Route path="/culture/:id" element={<CultureDetail />} />
+              <Route path="/post/:id" element={<PostDetail />} />
+              <Route path="/order/:id" element={<OrderDetail />} />
+              <Route path="/guide/:id" element={<GuideDetail />} />
+              <Route path="/user/:userName" element={<UserProfile />} />
+            </Routes>
           </AnimatePresence>
         </main>
       </div>
