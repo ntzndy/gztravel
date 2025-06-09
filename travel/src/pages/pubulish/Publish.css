@@ -257,6 +257,28 @@
   justify-content: flex-end;
 }
 
+.publish-actions button {
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.publish-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled {
+  background: var(--gray);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:disabled {
+  border-color: var(--gray);
+  color: var(--dark-gray);
+  background: var(--light-gray);
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .publish-container {

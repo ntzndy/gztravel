@@ -3,7 +3,9 @@ import { FiSettings, FiGrid, FiBookmark, FiMapPin, FiCalendar, FiShoppingBag, Fi
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import PostCard from '../../components/PostCard';
-import { mockUser, mockUserPosts, mockOrders } from '../../mock';
+import { mockUser } from '../../mock/user';
+import { mockUserPosts } from '../../mock/post';
+import { mockOrders } from '../../mock/order';
 import './Profile.css';
 
 const Profile = () => {
@@ -14,7 +16,18 @@ const Profile = () => {
   const [authMode, setAuthMode] = useState('login');
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const [userData, setUserData] = useState(mockUser);
+  const [userData, setUserData] = useState({
+    id: 1,
+    name: '小红薯用户',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612c03c?w=150&h=150&fit=crop&crop=face',
+    bio: '热爱生活 | 美食探索者 | 旅行达人 ✨',
+    location: '上海，中国',
+    joinDate: '2023年5月',
+    followers: 1234,
+    following: 567,
+    posts: 2,
+    likes: 5678
+  });
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -22,13 +35,24 @@ const Profile = () => {
     email: ''
   });
   const [editFormData, setEditFormData] = useState({
-    name: mockUser.name,
-    bio: mockUser.bio,
-    location: mockUser.location,
-    avatar: mockUser.avatar
+    name: userData.name,
+    bio: userData.bio,
+    location: userData.location,
+    avatar: userData.avatar
   });
   
   const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    // 确保用户数据被正确加载
+    setUserData(mockUser);
+    setEditFormData({
+      name: mockUser.name,
+      bio: mockUser.bio,
+      location: mockUser.location,
+      avatar: mockUser.avatar
+    });
+  }, []);
 
   // 点击外部关闭下拉菜单
   useEffect(() => {
@@ -148,13 +172,18 @@ const Profile = () => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    // 更新用户数据
+    // 更新用户数据，确保所有字段都被保存
     setUserData({
       ...userData,
-      name: editFormData.name,
-      bio: editFormData.bio,
-      location: editFormData.location,
-      avatar: editFormData.avatar
+      name: editFormData.name || userData.name,
+      bio: editFormData.bio || userData.bio,
+      location: editFormData.location || userData.location,
+      avatar: editFormData.avatar || userData.avatar,
+      joinDate: userData.joinDate,
+      followers: userData.followers,
+      following: userData.following,
+      posts: userData.posts,
+      likes: userData.likes
     });
     setShowEditModal(false);
     alert('资料更新成功！');
@@ -170,6 +199,9 @@ const Profile = () => {
     e.stopPropagation(); // 阻止事件冒泡
     navigate(`/order/${orderId}`);
   };
+
+  // 调试输出userData
+  console.log('userData', userData);
 
   // 未登录状态的渲染
   if (!isLoggedIn) {
@@ -349,73 +381,78 @@ const Profile = () => {
                 alt={userData.name}
                 className="profile-avatar"
               />
-              <button className="edit-avatar-btn" onClick={handleEditProfile}>
+              <button 
+                className="edit-avatar-btn" 
+                onClick={handleEditProfile}
+                title="编辑资料"
+              >
                 <FiEdit3 size={16} />
               </button>
             </div>
             
             <div className="user-details">
               <div className="user-header">
-                <h1 className="user-name">{userData.name}</h1>
-                {/* 用户名右上角导航栏 */}
+                <div className="user-title">
+                  <h1 className="user-name">{userData.name}</h1>
+                  <p className="user-bio">{userData.bio}</p>
+                  <div className="user-meta">
+                    <div className="meta-item" title="所在地">
+                      <FiMapPin size={16} />
+                      <span>{userData.location}</span>
+                    </div>
+                    <div className="meta-item" title="加入时间">
+                      <FiCalendar size={16} />
+                      <span>加入于 {userData.joinDate}</span>
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="user-nav">
                   <div className="settings-dropdown" ref={dropdownRef}>
                     <button 
-                      className="settings-btn"
+                      className="settings-btn gear-only"
                       onClick={() => setShowSettingsDropdown(!showSettingsDropdown)}
+                      aria-label="用户设置菜单"
+                      title="设置"
                     >
-                      <FiSettings size={18} />
-                      <FiChevronDown size={14} className={`chevron ${showSettingsDropdown ? 'rotated' : ''}`} />
+                      <FiSettings size={22} />
                     </button>
                     
-                    <AnimatePresence>
-                      {showSettingsDropdown && (
-                        <motion.div 
-                          className="dropdown-menu"
-                          initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
+                    {showSettingsDropdown && (
+                      <div className="dropdown-menu">
+                        <button 
+                          className="dropdown-item"
+                          onClick={handleEditProfile}
                         >
-                          <button className="dropdown-item" onClick={handleEditProfile}>
-                            <FiEdit3 size={16} />
-                            <span>编辑资料</span>
-                          </button>
-                          <button className="dropdown-item" onClick={handleSettings}>
-                            <FiSettings size={16} />
-                            <span>设置</span>
-                          </button>
-                          <div className="dropdown-divider"></div>
-                          <button className="dropdown-item logout" onClick={handleLogout}>
-                            <FiLogOut size={16} />
-                            <span>退出登录</span>
-                          </button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                          <FiEdit3 size={18} />
+                          编辑资料
+                        </button>
+                        <button 
+                          className="dropdown-item"
+                          onClick={handleSettings}
+                        >
+                          <FiSettings size={18} />
+                          账号设置
+                        </button>
+                        <div className="dropdown-divider" />
+                        <button 
+                          className="dropdown-item logout"
+                          onClick={handleLogout}
+                        >
+                          <FiLogOut size={18} />
+                          退出登录
+                        </button>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
-              
-              <p className="user-bio">{userData.bio}</p>
-              
-              <div className="user-meta">
-                <div className="meta-item">
-                  <FiMapPin size={14} />
-                  <span>{userData.location}</span>
-                </div>
-                <div className="meta-item">
-                  <FiCalendar size={14} />
-                  <span>加入于 {userData.joinDate}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 统计数据 */}
           <div className="stats-section">
-            <div className="stat-item">
-              <span className="stat-number">{mockUserPosts.length}</span>
+            <div className="stat-item" onClick={() => setActiveTab('posts')}>
+              <span className="stat-number">{userData.posts}</span>
               <span className="stat-label">帖子</span>
             </div>
             <div className="stat-item">
@@ -425,6 +462,10 @@ const Profile = () => {
             <div className="stat-item">
               <span className="stat-number">{userData.following}</span>
               <span className="stat-label">关注</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">{userData.likes}</span>
+              <span className="stat-label">获赞</span>
             </div>
           </div>
         </div>

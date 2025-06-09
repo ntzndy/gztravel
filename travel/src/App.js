@@ -13,7 +13,6 @@ import CultureDetail from './pages/home/CultureDetail';
 import PostDetail from './pages/post/PostDetail';
 import OrderDetail from './pages/order/OrderDetail';
 import GuideDetail from './pages/guide/GuideDetail';
-import CommunityPostDetail from './pages/post/PostDetail';
 import UserProfile from './pages/community/UserProfile';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';

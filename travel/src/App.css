@@ -7,7 +7,7 @@
 .main-content {
   flex: 1;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* 全局样式 */
@@ -19,8 +19,10 @@
   --gray: #E0E0E0;
   --light-gray: #F5F5F5;
   --white: #FFFFFF;
-  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   --transition: all 0.3s ease;
+  --dark-gray: #666666;
+  --border-radius: 12px;
 }
 
 /* 响应式布局 */

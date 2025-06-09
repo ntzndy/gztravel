@@ -1,36 +1,36 @@
 export const culturePage = {
   zh: {
     hero: {
-      title: '探索多彩贵州',
+      title: '探索多彩黎从榕',
       subtitle: '感受少数民族文化魅力 · 体验村超激情 · 发现绝美景点',
       stats: {
-        ethnicGroups: '48个民族',
+        ethnicGroups: '非遗文化',
         villageSoccer: '村超热潮',
-        worldHeritage: '世界遗产'
+        worldHeritage: '超绝景点'
       }
     },
     nav: {
-      culture: '民族文化',
-      football: '村超比赛',
-      spots: '精彩景点'
+      culture: '非遗文化',
+      football: '村超联赛',
+      spots: '景点推荐'
     },
     sections: {
       culture: {
-        title: '多彩民族文化',
-        subtitle: '探索贵州丰富多彩的少数民族文化传统'
+        title: '多彩非遗文化',
+        subtitle: '探索丰富多彩的少数民族非遗文化传统'
       },
       football: {
-        title: '村超风采',
+        title: '村超热潮',
         subtitle: '感受乡村足球的激情与少数民族文化的完美融合'
       },
       spots: {
-        title: '绝美景点',
-        subtitle: '发现贵州的自然奇观与文化瑰宝'
+        title: '超绝景点',
+        subtitle: '发现黎平、从江、榕江的自然奇观与文化瑰宝'
       }
     },
     cta: {
       title: '加入我们的社区',
-      subtitle: '分享你的贵州之旅，记录美好时光',
+      subtitle: '分享你的黎从榕之旅，记录美好时光',
       buttons: {
         findGuide: '找个主理人',
         exploreCommunity: '探索社区'
@@ -46,38 +46,38 @@ export const culturePage = {
   },
   en: {
     hero: {
-      title: 'Explore Colorful Guizhou',
-      subtitle: 'Experience Ethnic Culture · Village Soccer Passion · Discover Scenic Spots',
+      title: 'Explore Liping, Congjiang & Rongjiang',
+      subtitle: 'Experience Intangible Cultural Heritage · Village Super League · Discover Stunning Spots',
       stats: {
-        ethnicGroups: '48 Ethnic Groups',
-        villageSoccer: 'Village Soccer',
-        worldHeritage: 'World Heritage'
+        ethnicGroups: 'Cultural Heritage',
+        villageSoccer: 'Village Super League',
+        worldHeritage: 'Stunning Spots'
       }
     },
     nav: {
-      culture: 'Ethnic Culture',
-      football: 'Village Soccer',
-      spots: 'Scenic Spots'
+      culture: 'Cultural Heritage',
+      football: 'Village Super League',
+      spots: 'Attractions'
     },
     sections: {
       culture: {
-        title: 'Colorful Ethnic Culture',
-        subtitle: 'Explore the rich ethnic cultural traditions of Guizhou'
+        title: 'Colorful Cultural Heritage',
+        subtitle: 'Explore the rich intangible cultural heritage of ethnic minorities'
       },
       football: {
-        title: 'Village Soccer',
-        subtitle: 'Experience the passion of village soccer and its perfect integration with ethnic culture'
+        title: 'Village Super League',
+        subtitle: 'Experience the passion of rural football and its perfect integration with ethnic culture'
       },
       spots: {
-        title: 'Beautiful Spots',
-        subtitle: 'Discover natural wonders and cultural treasures of Guizhou'
+        title: 'Stunning Spots',
+        subtitle: 'Discover natural wonders and cultural treasures in Liping, Congjiang and Rongjiang'
       }
     },
     cta: {
       title: 'Join Our Community',
-      subtitle: 'Share your Guizhou journey and record beautiful moments',
+      subtitle: 'Share your journey through these three counties and record wonderful moments',
       buttons: {
-        findGuide: 'Find a Guide',
+        findGuide: 'Find a Local Guide',
         exploreCommunity: 'Explore Community'
       }
     },
@@ -91,38 +91,38 @@ export const culturePage = {
   },
   ja: {
     hero: {
-      title: 'カラフル貴州を探検',
-      subtitle: '少数民族文化の魅力 · 村サッカーの情熱 · 絶景スポット',
+      title: '黎平・従江・榕江を探検',
+      subtitle: '無形文化遺産の魅力 · 村スーパーリーグ · 絶景スポット',
       stats: {
-        ethnicGroups: '48の民族',
-        villageSoccer: '村サッカー',
-        worldHeritage: '世界遺産'
+        ethnicGroups: '文化遺産',
+        villageSoccer: '村スーパーリーグ',
+        worldHeritage: '絶景スポット'
       }
     },
     nav: {
-      culture: '民族文化',
-      football: '村サッカー',
+      culture: '文化遺産',
+      football: '村スーパーリーグ',
       spots: '観光スポット'
     },
     sections: {
       culture: {
-        title: '多彩な民族文化',
-        subtitle: '貴州の豊かな少数民族文化の伝統を探る'
+        title: '多彩な文化遺産',
+        subtitle: '少数民族の豊かな無形文化遺産を探る'
       },
       football: {
-        title: '村サッカーの魅力',
-        subtitle: '村サッカーの情熱と少数民族文化の完璧な融合を体験'
+        title: '村スーパーリーグ',
+        subtitle: '農村サッカーの情熱と少数民族文化の完璧な融合を体験'
       },
       spots: {
         title: '絶景スポット',
-        subtitle: '貴州の自然の驚異と文化的宝物を発見'
+        subtitle: '黎平・従江・榕江の自然の驚異と文化的宝物を発見'
       }
     },
     cta: {
       title: 'コミュニティに参加',
-      subtitle: 'あなたの貴州旅行を共有し、素晴らしい思い出を記録',
+      subtitle: 'あなたの三県の旅を共有し、素晴らしい思い出を記録',
       buttons: {
-        findGuide: 'ガイドを探す',
+        findGuide: '現地ガイドを探す',
         exploreCommunity: 'コミュニティを探索'
       }
     },

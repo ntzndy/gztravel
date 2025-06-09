@@ -28,7 +28,7 @@ const Header = () => {
         <div className="header-content">
           {/* Logo */}
           <Link to="/" className="logo">
-            <span className="logo-text">贵州travel</span>
+            <span className="logo-text">LCK Travel</span>
           </Link>
 
           {/* 搜索框 */}
@@ -36,7 +36,7 @@ const Header = () => {
             <FiSearch className="search-icon" />
             <input
               type="text"
-              placeholder={t('search_placeholder') || "搜索景点、文化、体验..."}
+              placeholder={t('search_placeholder')}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
               className="search-input"
@@ -51,7 +51,7 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FiHeart />
-              <span>首页</span>
+              <span>{t('nav.home')}</span>
             </Link>
             
             <Link 
@@ -60,7 +60,7 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FiMessageCircle />
-              <span>社区</span>
+              <span>{t('nav.community')}</span>
             </Link>
 
             <Link 
@@ -69,7 +69,7 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FiUsers />
-              <span>导游</span>
+              <span>{t('nav.guides')}</span>
             </Link>
             
             <Link 
@@ -78,7 +78,7 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FiPlus />
-              <span>发布</span>
+              <span>{t('nav.publish')}</span>
             </Link>
             
             <Link 
@@ -87,7 +87,7 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <FiUser />
-              <span>我的</span>
+              <span>{t('nav.profile')}</span>
             </Link>
           </nav>
 
@@ -100,7 +100,7 @@ const Header = () => {
           <button 
             className="mobile-menu"
             onClick={toggleMobileMenu}
-            aria-label="Toggle menu"
+            aria-label={t('nav.toggle_menu')}
           >
             <FiMenu size={24} />
           </button>

@@ -1,10 +1,7 @@
 .post-detail-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 32px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  padding: 94px 20px 32px 20px;
+  padding: 20px;
 }
 .back-btn {
   background: none;
@@ -15,9 +12,14 @@
   margin-bottom: 16px;
 }
 .post-card-detail {
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.post-card-detail:last-child {
+  margin-bottom: 0;
 }
 .user-info {
   display: flex;
@@ -172,4 +174,24 @@
   color: #bbb;
   font-size: 14px;
   margin: 12px 0;
-} 
+}
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.load-more-btn {
+  background: #fff;
+  border: 1px solid #e94f4a;
+  color: #e94f4a;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.load-more-btn:hover {
+  background: #e94f4a;
+  color: #fff;
+}

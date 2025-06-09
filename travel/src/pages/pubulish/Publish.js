@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiCamera, FiX, FiMapPin, FiHash } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { mockUser } from '../../mock';
 import './Publish.css';
 
 const Publish = () => {
@@ -9,10 +10,17 @@ const Publish = () => {
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState('');
   const [location, setLocation] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     files.forEach(file => {
+      // 检查文件大小（限制为5MB）
+      if (file.size > 5 * 1024 * 1024) {
+        alert('图片大小不能超过5MB');
+        return;
+      }
+      
       const reader = new FileReader();
       reader.onload = (event) => {
         setImages(prev => [...prev, {
@@ -40,20 +48,49 @@ const Publish = () => {
     setTags(prev => prev.filter(tag => tag !== tagToRemove));
   };
 
-  const handlePublish = () => {
+  const handlePublish = async () => {
     if (!content.trim() && images.length === 0) {
       alert('请添加一些内容或图片！');
       return;
     }
-    
-    // 这里可以处理发布逻辑
-    alert('发布成功！');
-    
-    // 重置表单
-    setContent('');
-    setImages([]);
-    setTags([]);
-    setLocation('');
+
+    try {
+      setIsSubmitting(true);
+
+      // 构建发布数据
+      const postData = {
+        userId: mockUser.id,
+        content: content.trim(),
+        images: images.map(img => img.url),
+        tags,
+        location: location.trim(),
+        createdAt: new Date().toISOString(),
+        likes: 0,
+        comments: []
+      };
+
+      // TODO: 这里应该调用实际的API
+      console.log('发布数据:', postData);
+      
+      // 模拟API调用延迟
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // 更新用户帖子数
+      mockUser.posts += 1;
+
+      // 重置表单
+      setContent('');
+      setImages([]);
+      setTags([]);
+      setLocation('');
+      
+      alert('发布成功！');
+    } catch (error) {
+      console.error('发布失败:', error);
+      alert('发布失败，请稍后重试');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,9 +203,18 @@ const Publish = () => {
 
           {/* 发布按钮 */}
           <div className="publish-actions">
-            <button className="btn btn-secondary">保存草稿</button>
-            <button className="btn btn-primary" onClick={handlePublish}>
-              发布
+            <button 
+              className="btn btn-secondary" 
+              disabled={isSubmitting}
+            >
+              保存草稿
+            </button>
+            <button 
+              className="btn btn-primary" 
+              onClick={handlePublish}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? '发布中...' : '发布'}
             </button>
           </div>
         </div>

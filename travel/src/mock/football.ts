@@ -1,272 +1,4 @@
-// 足球场地模拟数据
-export interface Facilities {
-  fieldSize: string;
-  grassType: string;
-  lighting: string;
-  changeRooms: number;
-  showers: number;
-  parking: number;
-}
-
-export interface Price {
-  type: string;
-  price: string;
-}
-
-export interface OpeningHours {
-  weekdays: string;
-  weekends: string;
-  holidays: string;
-}
-
-export interface Image {
-  url: string;
-  description: string;
-}
-
-export interface FootballReview {
-  id: number;
-  user: {
-    name: string;
-    avatar: string;
-  };
-  rating: number;
-  comment: string;
-  date: string;
-}
-
-export interface NearbyFacility {
-  name: string;
-  distance: string;
-  type: string;
-}
-
-export interface FootballField {
-  id: number;
-  name: string;
-  coverImage: string;
-  description: string;
-  location: string;
-  rating: number;
-  reviewCount: number;
-  features: string[];
-  facilities: Facilities;
-  prices: Price[];
-  openingHours: OpeningHours;
-  bookingRules: string[];
-  images: Image[];
-  reviews: FootballReview[];
-  nearbyFacilities: NearbyFacility[];
-}
-
-export const footballFields: Record<string, FootballField> = {
-  "1": {
-    id: 1,
-    name: '星光足球场',
-    coverImage: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    description: '星光足球场是一个专业级的足球场地，配备完善的设施和专业的草坪。无论是业余爱好者还是专业球队，都能在这里享受到高质量的足球运动体验。',
-    location: '广州市天河区体育中心西路123号',
-    rating: 4.8,
-    reviewCount: 328,
-    features: [
-      '标准11人制球场',
-      'FIFA认证草坪',
-      '夜间照明',
-      '更衣室',
-      '停车场',
-      '观众席'
-    ],
-    facilities: {
-      fieldSize: '105m × 68m',
-      grassType: '混合草皮',
-      lighting: '1200勒克斯LED照明',
-      changeRooms: 4,
-      showers: 8,
-      parking: 100
-    },
-    prices: [
-      {
-        type: '白天（8:00-17:00）',
-        price: '￥800/小时'
-      },
-      {
-        type: '晚上（18:00-22:00）',
-        price: '￥1200/小时'
-      },
-      {
-        type: '全天包场',
-        price: '￥12000/天'
-      }
-    ],
-    openingHours: {
-      weekdays: '08:00-22:00',
-      weekends: '08:00-23:00',
-      holidays: '09:00-22:00'
-    },
-    bookingRules: [
-      '至少提前24小时预约',
-      '取消预约需提前12小时',
-      '雨天自动取消并退款',
-      '禁止穿钉鞋'
-    ],
-    images: [
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '球场全景'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '更衣室'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '夜景'
-      }
-    ],
-    reviews: [
-      {
-        id: 1,
-        user: {
-          name: '张先生',
-          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80'
-        },
-        rating: 5,
-        comment: '场地维护得很好，草坪很舒服，设施也很完善。',
-        date: '2024-03-15'
-      },
-      {
-        id: 2,
-        user: {
-          name: '李教练',
-          avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80'
-        },
-        rating: 4,
-        comment: '经常带队来这里训练，场地质量稳定，就是高峰期比较难预约。',
-        date: '2024-03-10'
-      }
-    ],
-    nearbyFacilities: [
-      {
-        name: '体育中心地铁站',
-        distance: '500米',
-        type: '交通'
-      },
-      {
-        name: '运动主题餐厅',
-        distance: '800米',
-        type: '餐饮'
-      },
-      {
-        name: '体育用品商店',
-        distance: '300米',
-        type: '购物'
-      }
-    ]
-  },
-  "2": {
-    id: 2,
-    name: '丹寨村超球场',
-    coverImage: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    description: '丹寨村超球场是一个充满民族特色的足球场地，融合了现代设施和苗族文化元素。',
-    location: '贵州省黔东南州丹寨县',
-    rating: 4.7,
-    reviewCount: 256,
-    features: [
-      '标准7人制球场',
-      '民族特色装饰',
-      '夜间照明',
-      '更衣室'
-    ],
-    facilities: {
-      fieldSize: '50m × 30m',
-      grassType: '人造草皮',
-      lighting: '800勒克斯LED照明',
-      changeRooms: 2,
-      showers: 4,
-      parking: 30
-    },
-    prices: [
-      {
-        type: '白天（8:00-17:00）',
-        price: '￥300/小时'
-      },
-      {
-        type: '晚上（18:00-22:00）',
-        price: '￥400/小时'
-      },
-      {
-        type: '全天包场',
-        price: '￥3000/天'
-      }
-    ],
-    openingHours: {
-      weekdays: '08:00-22:00',
-      weekends: '08:00-22:00',
-      holidays: '09:00-21:00'
-    },
-    bookingRules: [
-      '至少提前12小时预约',
-      '取消预约需提前6小时',
-      '雨天可正常使用',
-      '禁止穿钉鞋'
-    ],
-    images: [
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '球场全景'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '民族特色装饰'
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-        description: '夜景'
-      }
-    ],
-    reviews: [
-      {
-        id: 1,
-        user: {
-          name: '王教练',
-          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80'
-        },
-        rating: 5,
-        comment: '场地虽小但设施齐全，很适合业余比赛。',
-        date: '2024-03-20'
-      },
-      {
-        id: 2,
-        user: {
-          name: '小李',
-          avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80'
-        },
-        rating: 4,
-        comment: '民族特色很有趣，价格也很实惠。',
-        date: '2024-03-18'
-      }
-    ],
-    nearbyFacilities: [
-      {
-        name: '丹寨古镇',
-        distance: '1公里',
-        type: '景点'
-      },
-      {
-        name: '农家乐',
-        distance: '500米',
-        type: '餐饮'
-      },
-      {
-        name: '便利店',
-        distance: '200米',
-        type: '购物'
-      }
-    ]
-  }
-};
-
-// 足球赛事数据
+// 足球比赛相关数据结构
 export interface MatchTeam {
   name: string;
   logo: string;
@@ -308,113 +40,246 @@ export interface FootballData {
   highlights: MatchHighlight[];
 }
 
-export const footballData: FootballData = {
-  schedules: [
-    {
-      id: 1,
-      round: "2024贵州村超联赛第四轮",
-      homeTeam: {
-        name: "丹寨万达小镇队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+// 多语言数据
+export const footballData = {
+  zh: {
+    schedules: [
+      {
+        id: 1,
+        round: '小组赛第一轮',
+        homeTeam: {
+          name: '丹寨雄鹰队',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/danzhai.png',
+          score: 3
+        },
+        awayTeam: {
+          name: '从江猎豹队',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/congjiang.png',
+          score: 1
+        },
+        date: '2024-03-15',
+        time: '15:30',
+        venue: '丹寨县民族体育场',
+        ticketInfo: '门票：30元/人',
+        broadcastChannel: '贵州体育频道'
       },
-      awayTeam: {
-        name: "雷山苗寨联队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+      {
+        id: 2,
+        round: '小组赛第二轮',
+        homeTeam: {
+          name: '黎平雷霆队',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/liping.png'
+        },
+        awayTeam: {
+          name: '榕江火箭队',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/rongjiang.png'
+        },
+        date: '2024-03-22',
+        time: '19:30',
+        venue: '黎平县全民健身中心',
+        ticketInfo: '门票：40元/人',
+        broadcastChannel: '黔东南体育'
+      }
+    ],
+    highlights: [
+      {
+        id: 1,
+        title: '精彩绝伦！丹寨雄鹰3:1力克从江猎豹',
+        type: 'highlight',
+        matchInfo: {
+          homeTeam: '丹寨雄鹰队',
+          awayTeam: '从江猎豹队',
+          score: '3-1',
+          date: '2024-03-15'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1.png',
+        content: '在2024贵州村超联赛小组赛首轮比赛中，丹寨雄鹰队主场迎战从江猎豹队。比赛第23分钟，雄鹰队10号杨飞突破防线率先破门。随后猎豹队7号李强一记远射扳平比分。下半场雄鹰队连入两球，最终以3:1取得开门红。全场比赛精彩纷呈，双方球员展现出高超的技术和顽强的意志。',
+        videoUrl: 'https://video.gzfootball.com/match1/highlight.mp4',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-2.png'
+        ],
+        tags: ['精彩进球', '技术突破', '团队配合', '开门红'],
+        publishDate: '2024-03-15'
       },
-      date: "2024-03-27",
-      time: "19:30",
-      venue: "丹寨县民族文化体育场",
-      ticketInfo: "门票：30元/人",
-      broadcastChannel: "贵州文体频道"
-    },
-    {
-      id: 2,
-      round: "2024贵州村超联赛第四轮",
-      homeTeam: {
-        name: "从江加榜梯田队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+      {
+        id: 2,
+        title: '赛前特辑：黎平雷霆VS榕江火箭，谁将笑到最后？',
+        type: 'report',
+        matchInfo: {
+          homeTeam: '黎平雷霆队',
+          awayTeam: '榕江火箭队',
+          date: '2024-03-22'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2.png',
+        content: '本周五晚，2024贵州村超联赛小组赛第二轮将迎来一场焦点之战。黎平雷霆队将在主场迎战榕江火箭队。两支球队在去年的对决中贡献了令人难忘的比赛，火箭队以4:3险胜。今年雷霆队引进了新的外援，实力大增，而火箭队在预选赛中展现出强大的攻击力。这场比赛必将再次点燃球迷的激情！',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-2.png'
+        ],
+        tags: ['赛前预热', '焦点之战', '强强对话', '传统德比'],
+        publishDate: '2024-03-20'
+      }
+    ]
+  },
+  en: {
+    schedules: [
+      {
+        id: 1,
+        round: 'Group Stage Round 1',
+        homeTeam: {
+          name: 'Danzhai Eagles',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/danzhai.png',
+          score: 3
+        },
+        awayTeam: {
+          name: 'Congjiang Leopards',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/congjiang.png',
+          score: 1
+        },
+        date: '2024-03-15',
+        time: '15:30',
+        venue: 'Danzhai Ethnic Sports Stadium',
+        ticketInfo: 'Tickets: ¥30/person',
+        broadcastChannel: 'Guizhou Sports Channel'
       },
-      awayTeam: {
-        name: "黄平飞云队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+      {
+        id: 2,
+        round: 'Group Stage Round 2',
+        homeTeam: {
+          name: 'Liping Thunder',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/liping.png'
+        },
+        awayTeam: {
+          name: 'Rongjiang Rockets',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/rongjiang.png'
+        },
+        date: '2024-03-22',
+        time: '19:30',
+        venue: 'Liping Fitness Center',
+        ticketInfo: 'Tickets: ¥40/person',
+        broadcastChannel: 'Qiandongnan Sports'
+      }
+    ],
+    highlights: [
+      {
+        id: 1,
+        title: 'Spectacular! Danzhai Eagles Triumph 3-1 Over Congjiang Leopards',
+        type: 'highlight',
+        matchInfo: {
+          homeTeam: 'Danzhai Eagles',
+          awayTeam: 'Congjiang Leopards',
+          score: '3-1',
+          date: '2024-03-15'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1.png',
+        content: 'In the opening round of the 2024 Guizhou Village Super League group stage, Danzhai Eagles hosted Congjiang Leopards. Eagles\' No.10 Yang Fei broke through the defense to score first in the 23rd minute. Leopards\' No.7 Li Qiang equalized with a long-range shot. The Eagles scored twice in the second half to secure a 3-1 victory. The match showcased excellent technical skills and strong determination from both teams.',
+        videoUrl: 'https://video.gzfootball.com/match1/highlight.mp4',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-2.png'
+        ],
+        tags: ['Goals', 'Skills', 'Teamwork', 'Opening Win'],
+        publishDate: '2024-03-15'
       },
-      date: "2024-03-28",
-      time: "15:00",
-      venue: "从江县民族体育场",
-      ticketInfo: "门票：20元/人",
-      broadcastChannel: "贵州文体频道"
-    },
-    {
-      id: 3,
-      round: "2024贵州村超联赛第四轮",
-      homeTeam: {
-        name: "台江银龙队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+      {
+        id: 2,
+        title: 'Pre-match Special: Liping Thunder vs Rongjiang Rockets - Who Will Prevail?',
+        type: 'report',
+        matchInfo: {
+          homeTeam: 'Liping Thunder',
+          awayTeam: 'Rongjiang Rockets',
+          date: '2024-03-22'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2.png',
+        content: 'This Friday night will feature a crucial match in Round 2 of the 2024 Guizhou Village Super League group stage. Liping Thunder will host Rongjiang Rockets. Last year\'s encounter was unforgettable, with the Rockets winning 4-3. This year, Thunder has strengthened their squad with new signings, while the Rockets have shown impressive attacking prowess in the qualifiers. This match promises to ignite the passion of football fans once again!',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-2.png'
+        ],
+        tags: ['Preview', 'Key Match', 'Rivalry', 'Derby'],
+        publishDate: '2024-03-20'
+      }
+    ]
+  },
+  ja: {
+    schedules: [
+      {
+        id: 1,
+        round: 'グループステージ第1節',
+        homeTeam: {
+          name: '丹寨イーグルス',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/danzhai.png',
+          score: 3
+        },
+        awayTeam: {
+          name: '従江レパーズ',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/congjiang.png',
+          score: 1
+        },
+        date: '2024-03-15',
+        time: '15:30',
+        venue: '丹寨民族スポーツスタジアム',
+        ticketInfo: 'チケット：30元/人',
+        broadcastChannel: '貴州スポーツチャンネル'
       },
-      awayTeam: {
-        name: "榕江三宝侗寨队",
-        logo: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=100&h=100&fit=crop"
+      {
+        id: 2,
+        round: 'グループステージ第2節',
+        homeTeam: {
+          name: '黎平サンダー',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/liping.png'
+        },
+        awayTeam: {
+          name: '榕江ロケッツ',
+          logo: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/teams/rongjiang.png'
+        },
+        date: '2024-03-22',
+        time: '19:30',
+        venue: '黎平フィットネスセンター',
+        ticketInfo: 'チケット：40元/人',
+        broadcastChannel: '黔東南スポーツ'
+      }
+    ],
+    highlights: [
+      {
+        id: 1,
+        title: '圧巻！丹寨イーグルス、従江レパーズを3-1で撃破',
+        type: 'highlight',
+        matchInfo: {
+          homeTeam: '丹寨イーグルス',
+          awayTeam: '従江レパーズ',
+          score: '3-1',
+          date: '2024-03-15'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1.png',
+        content: '2024貴州村スーパーリーグのグループステージ第1節で、丹寨イーグルスがホームで従江レパーズと対戦。23分、イーグルスの10番楊飛が守備を突破して先制ゴール。その後レパーズの7番李強がロングシュートで同点に追いつく。後半、イーグルスが立て続けに2得点を挙げ、3-1で開幕戦を勝利で飾った。両チームが高い技術力と強い意志を見せた素晴らしい試合だった。',
+        videoUrl: 'https://video.gzfootball.com/match1/highlight.mp4',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/match1-2.png'
+        ],
+        tags: ['ゴール', '技術', 'チームワーク', '開幕戦勝利'],
+        publishDate: '2024-03-15'
       },
-      date: "2024-03-29",
-      time: "20:00",
-      venue: "台江县民族体育场",
-      ticketInfo: "门票：25元/人",
-      broadcastChannel: "贵州文体频道"
-    }
-  ],
-  highlights: [
-    {
-      id: 1,
-      title: "\"村超\"巨星杨小明：从放牛娃到球场英雄",
-      type: "interview",
-      matchInfo: {
-        homeTeam: "榕江三宝侗寨队",
-        awayTeam: "从江加榜梯田队",
-        score: "2-1",
-        date: "2024-03-25"
-      },
-      coverImage: "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=1200&h=600&fit=crop",
-      content: "在上周日的比赛中，杨小明梅开二度带领榕江三宝侗寨队取得胜利。赛后，这位来自大山深处的\"村超\"巨星接受了我们的专访...",
-      images: [
-        "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=600&h=400&fit=crop"
-      ],
-      tags: ["村超", "榕江三宝侗寨队", "杨小明", "赛后采访"],
-      publishDate: "2024-03-26"
-    },
-    {
-      id: 2,
-      title: "精彩回放：丹寨万达小镇队vs雷山苗寨联队",
-      type: "highlight",
-      matchInfo: {
-        homeTeam: "丹寨万达小镇队",
-        awayTeam: "雷山苗寨联队",
-        score: "3-3",
-        date: "2024-03-20"
-      },
-      coverImage: "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=1200&h=600&fit=crop",
-      content: "上周三的比赛堪称本赛季最精彩的对决之一，双方六粒进球，精彩纷呈...",
-      videoUrl: "https://example.com/highlights/match123",
-      tags: ["村超", "精彩回放", "丹寨万达小镇队", "雷山苗寨联队"],
-      publishDate: "2024-03-21"
-    },
-    {
-      id: 3,
-      title: "特别报道：村超带动乡村振兴",
-      type: "report",
-      matchInfo: {
-        homeTeam: "台江银龙队",
-        awayTeam: "黄平飞云队",
-        date: "2024-03-22"
-      },
-      coverImage: "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=1200&h=600&fit=crop",
-      content: "随着村超联赛的持续升温，越来越多的乡村通过足球运动推动当地旅游发展...",
-      images: [
-        "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=600&h=400&fit=crop"
-      ],
-      tags: ["村超", "特别报道", "乡村振兴"],
-      publishDate: "2024-03-23"
-    }
-  ]
+      {
+        id: 2,
+        title: '試合前特集：黎平サンダー対榕江ロケッツ、勝利を掴むのは？',
+        type: 'report',
+        matchInfo: {
+          homeTeam: '黎平サンダー',
+          awayTeam: '榕江ロケッツ',
+          date: '2024-03-22'
+        },
+        coverImage: 'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2.png',
+        content: '今週金曜日の夜、2024貴州村スーパーリーググループステージ第2節の注目カードが実現する。黎平サンダーがホームで榕江ロケッツと対戦。昨年の対戦では、ロケッツが4-3の接戦を制した。今年、サンダーは新たな外国人選手を獲得して戦力を強化、一方のロケッツは予選で強力な攻撃力を見せている。この試合は間違いなくファンの情熱を再び呼び起こすだろう！',
+        images: [
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-1.png',
+          'https://imagevsl1.oss-cn-chengdu.aliyuncs.com/gfootball/highlights/preview2-2.png'
+        ],
+        tags: ['プレビュー', '注目カード', 'ライバル対決', 'ダービー'],
+        publishDate: '2024-03-20'
+      }
+    ]
+  }
 }; 
