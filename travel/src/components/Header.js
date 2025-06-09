@@ -9,7 +9,14 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
+
+  // Logo 文本的多语言映射
+  const logoText = {
+    zh: '玩赚全球',
+    en: 'Global Travels',
+    ja: '世界を楽しむ'
+  };
 
   const isActive = (path) => {
     if (path === '/') {
@@ -28,7 +35,7 @@ const Header = () => {
         <div className="header-content">
           {/* Logo */}
           <Link to="/" className="logo">
-            <span className="logo-text">LCK Travel</span>
+            <span className="logo-text">{logoText[currentLanguage] || logoText.zh}</span>
           </Link>
 
           {/* 搜索框 */}
