@@ -35,7 +35,7 @@ const Header = () => {
         <div className="header-content">
           {/* Logo */}
           <Link to="/" className="logo">
-            <span className="logo-text">{logoText[currentLanguage] || logoText.zh}</span>
+            <span className="logo-text" style={{ marginLeft: "-25px" }}>{logoText[currentLanguage] || logoText.zh}</span>
           </Link>
 
           {/* 搜索框 */}
